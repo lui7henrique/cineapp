@@ -1,13 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetStaticProps } from "next";
-import styled from "styled-components";
 import { CardList } from "../components/CardList";
-import { Sidebar } from "../components/Sidebar";
 import { MovieType } from "../types/movie";
 import { TvType } from "../types/tv";
 import { Container, Content } from "../styles/home";
 import { Highlight } from "../components/Highlight";
-import { Header } from "../components/Header";
 
 export const getStaticProps: GetStaticProps = async () => {
   const popular = await fetch(
@@ -47,21 +44,23 @@ export default function Home({
   const topRatedMovies: MovieType[] = topRated.results;
   const popularTv: TvType[] = popularTV.results;
   const topRatedTv: TvType[] = topRatedTV.results;
+  console.log(topRatedTv);
 
   return (
     <Container>
+      <title>Cineapp</title>
       <Content>
-        <Header />
         <Highlight movie={popularMovies[0]} tv={popularTv[0]} />
         <CardList
           title="🎥 Filmes populares"
           list={popularMovies.slice(1, popularMovies.length)}
         />
+        <CardList title="✅ Filmes bem avaliados" list={topRatedMovies} />
         <CardList
           title="📺 Séries populares"
           list={popularTv.slice(1, popularMovies.length)}
         />
-        {/* <CardList title="Séries bem-avaliadas" list={topRatedTv.slice(1, 10)} /> */}
+        <CardList title="✅ Séries bem avaliadas" list={topRatedTv} />
       </Content>
     </Container>
   );

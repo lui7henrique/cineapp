@@ -1,11 +1,12 @@
-import { Header } from "../../components/Header";
+import { SearchBar } from "../../components/SearchBar";
 import { Container, Content } from "../../styles/home";
 
 export default function Tv() {
   return (
     <Container>
+      <title>Cineapp | TV</title>
       <Content>
-        <Header />
+        <SearchBar />
         <h1>TV</h1>
       </Content>
     </Container>

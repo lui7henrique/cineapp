@@ -13,8 +13,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   :root {
-    --background: #141A32;
-    --shape: #1b2138;
+    --background: #141620;
+    --shape: #090B10;
     --gradient: linear-gradient(90deg, rgba(0,53,157,1) 5%, rgba(0,111,255,1) 50%, rgba(63,204,255,1) 100%);
     --primary: rgba(0,53,157,1);
     --secondary: #D6AE2F;
@@ -26,7 +26,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   html {
-
     @media (max-width: 1080px) {
       font-size: 93.75%; //15px
     }
@@ -39,10 +38,10 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1rem;
     background-color: var(--background);
     color: var(--title);
-
+    overflow-x: hidden;
     a {
-    text-decoration: none;
-    color: white;
+      text-decoration: none;
+      color: white;
     }
   }
 
