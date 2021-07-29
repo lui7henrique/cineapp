@@ -3,6 +3,7 @@ import { MovieType } from "../../types/movie";
 import { TvType } from "../../types/tv";
 import { Content, Container } from "./styles";
 import { FaStar } from "react-icons/fa";
+import { FormatNote } from "../../utils/FormatNote";
 
 type HighlightType = {
   movie: MovieType;
@@ -20,7 +21,13 @@ export function Highlight({ movie, tv }: HighlightType) {
             alt=""
           />
           <div className="infos">
-            <h1>{movie.title}</h1>
+            <div>
+              <h1>{movie.title} </h1>
+              <span>
+                <FaStar size={30} />
+                {FormatNote(movie.vote_average)}
+              </span>
+            </div>
             <p>{movie.overview}</p>
           </div>
         </div>
@@ -31,7 +38,13 @@ export function Highlight({ movie, tv }: HighlightType) {
             alt=""
           />
           <div className="infos">
-            <h1>{tv.name}</h1>
+            <div>
+              <h1>{tv.name}</h1>
+              <span>
+                <FaStar size={30} />
+                {FormatNote(tv.vote_average)}
+              </span>
+            </div>
             <p>{tv.overview}</p>
           </div>
         </div>

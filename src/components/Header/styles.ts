@@ -10,11 +10,64 @@ export const Header = styled.header`
   padding: 1rem 2rem;
   background: var(--shape);
   z-index: 99999999;
+  height: 5rem;
+
+  button {
+    background: none;
+    border: none;
+
+    svg {
+      color: var(--title);
+    }
+
+    @media (min-width: 500px) {
+      display: none;
+    }
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--shape);
+
+    width: 100vh;
+    height: 110vh;
+
+    @media (min-width: 500px) {
+      display: none;
+    }
+
+    button {
+      position: fixed;
+      right: 0;
+      padding: 1rem;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      margin: 35% 16%;
+      a {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        font-size: 2rem;
+        margin-top: 1rem;
+      }
+    }
+  }
 
   .nav {
     display: flex;
     align-items: center;
     gap: 2rem;
+
+    @media (max-width: 500px) {
+      display: none;
+    }
 
     h1 {
       span {

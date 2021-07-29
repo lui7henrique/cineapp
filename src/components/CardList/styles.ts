@@ -17,22 +17,27 @@ export const Cardlist = styled.div<CardListProps>`
     display: flex;
     align-items: center;
     gap: 1rem;
-    overflow: hidden;
     margin-left: ${(props) => props.axisX}px;
     transition: all 0.3s ease;
+    width: 100vw;
 
-    @media (max-width: 800px) {
-      padding-left: 2rem;
+    &:hover {
+      .list_controller {
+        opacity: 1;
+      }
     }
 
-    @media (max-width: 800px) {
-      .list-controller {
-        display: none;
-      }
+    @media (max-width: 1120px) {
+      padding-right: 0;
       overflow-x: auto;
       margin: 0;
       padding-right: 2rem;
+
       &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .list_controller {
         display: none;
       }
     }
@@ -55,13 +60,7 @@ export const Cardlist = styled.div<CardListProps>`
       }
     }
 
-    &:hover {
-      .list_controller {
-        opacity: 1;
-      }
-    }
-
-    > div {
+    .movie {
       display: flex;
       flex-direction: column;
 
@@ -69,6 +68,10 @@ export const Cardlist = styled.div<CardListProps>`
         .infos {
           visibility: visible;
           opacity: 1;
+          z-index: 9999;
+        }
+        img {
+          filter: brightness(0.3);
         }
       }
 
@@ -78,10 +81,6 @@ export const Cardlist = styled.div<CardListProps>`
         filter: brightness(0.8);
         transition: all 0.2s ease-in-out;
         cursor: pointer;
-
-        &:hover {
-          filter: brightness(0.3);
-        }
       }
 
       .infos {

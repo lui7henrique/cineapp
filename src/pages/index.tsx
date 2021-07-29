@@ -54,13 +54,19 @@ export default function Home({
         <CardList
           title="🎥 Filmes populares"
           list={popularMovies.slice(1, popularMovies.length)}
+          type="movie"
         />
-        <CardList title="✅ Filmes bem avaliados" list={topRatedMovies} />
+        <CardList
+          title="✅ Filmes bem avaliados"
+          list={topRatedMovies}
+          type="movie"
+        />
         <CardList
           title="📺 Séries populares"
           list={popularTv.slice(1, popularMovies.length)}
+          type="tv"
         />
-        <CardList title="✅ Séries bem avaliadas" list={topRatedTv} />
+        <CardList title="✅ Séries bem avaliadas" list={topRatedTv} type="tv" />
       </Content>
     </Container>
   );

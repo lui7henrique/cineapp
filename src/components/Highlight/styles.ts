@@ -11,10 +11,20 @@ export const Content = styled.div`
   display: flex;
   max-width: 100vw;
 
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 1rem;
+    padding-right: 2rem;
+  }
+
   > div {
     display: flex;
     width: 47.1vw;
     flex-direction: column;
+
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
 
     &:first-child {
       margin-right: 2rem;
@@ -47,6 +57,22 @@ export const Content = styled.div`
       visibility: hidden;
       opacity: 0;
       transition: visibility 0.2s, opacity 0.2s linear;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          display: flex;
+          align-items: center;
+          font-size: 1.5rem;
+          gap: 0.2rem;
+
+          svg {
+            color: var(--secondary);
+          }
+        }
+      }
 
       h1 {
         white-space: nowrap;
