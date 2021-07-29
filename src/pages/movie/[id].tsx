@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { DetailsType } from "../../types/details";
 import { VideosType } from "../../types/videos";
-import { Container, Highlight } from "./styles";
+import { Container, Highlight } from "../../styles/movie";
 import { FormatRuntime } from "../../utils/FormatRuntime";
 import { MdPlayArrow } from "react-icons/md";
 import { usePlayer } from "../../hooks/usePlayer";
@@ -17,7 +17,7 @@ type PropsType = {
   videos: VideosType;
 };
 
-export function Movie({ details, videos }: PropsType) {
+export default function Movie({ details, videos }: PropsType) {
   const { showPlayer, hidePlayer, openPlayer } = usePlayer();
   console.log(videos.results[0]);
 
