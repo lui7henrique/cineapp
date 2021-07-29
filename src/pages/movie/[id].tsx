@@ -17,7 +17,7 @@ type PropsType = {
   videos: VideosType;
 };
 
-export default function Movie({ details, videos }: PropsType) {
+export function Movie({ details, videos }: PropsType) {
   const { showPlayer, hidePlayer, openPlayer } = usePlayer();
   console.log(videos.results[0]);
 
