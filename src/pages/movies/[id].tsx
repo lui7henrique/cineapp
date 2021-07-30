@@ -12,6 +12,7 @@ import { VideoPlayer } from "../../components/VideoPlayer";
 import { FaStar } from "react-icons/fa";
 import { useState } from "react";
 import { FormatValue } from "../../utils/FormatValue";
+import { Cast } from "../../components/Cast";
 
 type PropsType = {
   details: DetailsType;
@@ -21,8 +22,6 @@ type PropsType = {
 
 export default function Movie({ details, videos, credits }: PropsType) {
   const { showPlayer, hidePlayer, openPlayer } = usePlayer();
-  const [test, updateTest] = useState(20);
-  console.log(videos.results[0]);
 
   return (
     <>
@@ -106,47 +105,9 @@ export default function Movie({ details, videos, credits }: PropsType) {
               </div>
               <p>{details.overview}</p>
             </div>
-
-            <div className="cast">
-              <div>
-                <h1>Elenco</h1>
-              </div>
-              <div className="participants_list">
-                {credits.cast.slice(0, test).map((participant) => {
-                  return participant.profile_path ? (
-                    <div className="participant" key={participant.id}>
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500/${participant.profile_path}`}
-                        alt=""
-                      />
-                      <p>{participant.name}</p>
-                      <span>
-                        {participant.character ? participant.character : "?"}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="empty_participant" key={participant.id}>
-                      <div className="emptyImg" />
-                      <p>{participant.name}</p>
-                      <span>
-                        {participant.character ? participant.character : "?"}
-                      </span>
-                    </div>
-                  );
-                })}
-                {test >= credits.cast.length ? (
-                  <button onClick={() => updateTest(20)}>
-                    <IoMdEyeOff size={40} />
-                  </button>
-                ) : (
-                  <button onClick={() => updateTest(test + 20)}>
-                    <MdAdd size={40} />
-                  </button>
-                )}
-              </div>
-            </div>
           </main>
         </Content>
+        <Cast cast={credits.cast} />
       </Container>
     </>
   );

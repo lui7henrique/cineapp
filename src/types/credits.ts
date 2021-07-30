@@ -3,7 +3,7 @@ export type CreditsType = {
   cast: Cast[];
 };
 
-type Cast = {
+export type Cast = {
   adult: boolean;
   gender: number;
   id: number;

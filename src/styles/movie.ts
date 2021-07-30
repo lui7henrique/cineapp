@@ -12,13 +12,21 @@ export const Highlight = styled.div<HighlightType>`
   width: 100%;
   height: 50vh;
   padding: 10rem 5rem;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
     ${(props) =>
       `url(https://image.tmdb.org/t/p/original/${props.backdrop_path})`};
   /* background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original/${props.backdrop_path})`}; */
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (max-width: 500px) {
+    padding: 10rem 2.5rem;
+    .infos,
+    .finance {
+      display: none;
+    }
+  }
 
   > div {
     display: flex;
@@ -91,12 +99,19 @@ export const Highlight = styled.div<HighlightType>`
       }
     }
 
+    @media (max-width: 500px) {
+      font-size: 1rem;
+    }
+
     &.watchlist {
       background: none;
       border: 2px solid var(--title);
       color: var(--title);
       cursor: not-allowed;
       padding: 0.5rem 1.5rem;
+      @media (max-width: 500px) {
+        padding: 0.7rem 1.5rem;
+      }
     }
   }
 
@@ -114,14 +129,22 @@ export const Highlight = styled.div<HighlightType>`
 export const Content = styled.div`
   padding: 3rem 5rem;
   display: flex;
-  @media (max-width: 800px) {
-    flex-direction: column;
-  }
+
   gap: 3rem;
+
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
 
   .poster {
     border-radius: 5px;
     width: 300px;
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
   }
 
   .company {
@@ -129,7 +152,9 @@ export const Content = styled.div`
   }
 
   .details {
+    max-width: 300px;
     button {
+      width: 100%;
       width: 100%;
       border: none;
       outline: none;
@@ -169,95 +194,6 @@ export const Content = styled.div`
       line-height: 1.5rem;
       text-align: justify;
       text-justify: inter-word;
-    }
-
-    .cast {
-      .participants_list {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1rem;
-        width: 100%;
-
-        button {
-          outline: none;
-          border: none;
-          background: var(--primary);
-          color: var(--title);
-          width: 100px;
-          height: 152px;
-          border-radius: 5px;
-          transition: all 0.2s ease-in;
-          margin-top: -40px;
-          &:hover {
-            filter: brightness(0.8);
-          }
-        }
-
-        .participant {
-          display: flex;
-          flex-direction: column;
-
-          img {
-            border-radius: 5px;
-            width: 100px;
-            opacity: 0.7;
-            transition: all 0.2s ease-in;
-
-            &:hover {
-              opacity: 1;
-            }
-          }
-
-          p {
-            max-width: 100px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
-
-          span {
-            max-width: 100px;
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 0.7rem;
-            text-overflow: ellipsis;
-          }
-        }
-
-        .empty_participant {
-          display: flex;
-          flex-direction: column;
-
-          .emptyImg {
-            width: 100px;
-            height: 152px;
-            border-radius: 5px;
-            opacity: 0.7;
-            background: var(--shape);
-            transition: all 0.2s ease-in;
-
-            &:hover {
-              opacity: 1;
-            }
-          }
-
-          p {
-            max-width: 100px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
-
-          span {
-            max-width: 100px;
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 0.7rem;
-            text-overflow: ellipsis;
-          }
-        }
-      }
     }
   }
 

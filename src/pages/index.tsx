@@ -23,12 +23,17 @@ export const getStaticProps: GetStaticProps = async () => {
     "https://api.themoviedb.org/3/tv/top_rated?api_key=90f2b425e5ff1b801ed9dccf4bafadde"
   ).then((res) => res.json());
 
+  const upComing = await fetch(
+    "http://api.themoviedb.org/3/movie/upcoming?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR"
+  ).then((res) => res.json());
+
   return {
     props: {
       popular,
       topRated,
       popularTV,
       topRatedTV,
+      upComing,
     },
     revalidate: 60 * 60 * 24, //1 day
   };
@@ -39,11 +44,13 @@ export default function Home({
   topRated,
   popularTV,
   topRatedTV,
+  upComing,
 }: any) {
   const popularMovies: MovieType[] = popular.results;
   const topRatedMovies: MovieType[] = topRated.results;
   const popularTv: TvType[] = popularTV.results;
   const topRatedTv: TvType[] = topRatedTV.results;
+  const upComingList: MovieType[] = upComing.results;
 
   return (
     <Container>
@@ -53,13 +60,14 @@ export default function Home({
         <CardList
           title="🎥 Filmes populares"
           list={popularMovies.slice(1, popularMovies.length)}
-          type="movie"
+          type="movies"
         />
         <CardList
           title="✅ Filmes bem avaliados"
           list={topRatedMovies}
-          type="movie"
+          type="movies"
         />
+        <CardList title="💬 Em breve" list={upComingList} type="movies" />
         <CardList
           title="📺 Séries populares"
           list={popularTv.slice(1, popularMovies.length)}

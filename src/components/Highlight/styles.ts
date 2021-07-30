@@ -17,7 +17,7 @@ export const Content = styled.div`
     padding-right: 2rem;
   }
 
-  > div {
+  .item {
     display: flex;
     width: 47.1vw;
     flex-direction: column;
@@ -88,5 +88,9 @@ export const Content = styled.div`
         text-overflow: ellipsis;
       }
     }
+  }
+
+  div + div {
+    margin-bottom: 2rem;
   }
 `;

@@ -1,29 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
-import { FaStar } from "react-icons/fa";
-import { MovieType } from "../../types/movie";
-import { TvType } from "../../types/tv";
-import { Cardlist, ListControllerLeft, ListControllerRight } from "./styles";
 import { useEffect, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { FormatNote } from "../../utils/FormatNote";
-import Link from "next/link";
+import { Cast as CastType } from "../../types/credits";
+import {
+  Container,
+  Content,
+  ListControllerRight,
+  ListControllerLeft,
+} from "./styles";
 
-interface ICardListProps {
-  title: string;
-  list: MovieType[] | TvType[];
-  type: string;
+interface IInterfaceProps {
+  cast: CastType[];
 }
 
-export function CardList({ title, list, type }: ICardListProps) {
+export function Cast({ cast }: IInterfaceProps) {
   const [axisX, setAxisX] = useState(0);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
-
   const [showRightArrow, setShowRightArrow] = useState(true);
 
   function handleLeftArrowClick() {
     let x = axisX + Math.round(window.innerWidth / 2);
 
-    if (x >= 0) {
+    if (x > 0) {
       x = 0;
       setShowLeftArrow(false);
     } else {
@@ -34,9 +32,9 @@ export function CardList({ title, list, type }: ICardListProps) {
   }
 
   function handleRightArrowClick() {
-    const listWidth = list.length * 309.5;
+    const listWidth = cast.length * 150;
     let x = axisX - Math.round(window.innerWidth / 2);
-    console.log(`x: ${x} e listWidth: ${listWidth}`);
+    console.log(window.innerWidth - listWidth, x);
 
     if (window.innerWidth - listWidth > x) {
       const blankSpace = window.innerWidth > 800 ? 80 : 16;
@@ -52,43 +50,36 @@ export function CardList({ title, list, type }: ICardListProps) {
 
   useEffect(() => {
     const paddingLeft = window.innerWidth > 800 ? 80 : 28;
-    const listWidth = list.length * 309.5;
+    const listWidth = cast.length * 120;
 
     if (window.innerWidth - paddingLeft > listWidth) {
       setShowRightArrow(false);
     }
-  }, [list.length]);
+  }, []);
 
   return (
-    <Cardlist axisX={axisX}>
-      <h2>{title}</h2>
-      <section>
+    <Container>
+      <h1>Elenco</h1>
+      <Content axisX={axisX}>
         <ListControllerLeft
           className={`list_controller ${!showLeftArrow ? "disabled" : ""}`}
           onClick={handleLeftArrowClick}
         >
           <MdChevronLeft size={40} />
         </ListControllerLeft>
-        {list.map((item) => {
+        {cast.map((participant) => {
           return (
-            item.backdrop_path && (
-              <Link href={`/${type}/${item.id}`} key={item.id}>
-                <a>
-                  <div className="movie">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                      alt={item.name}
-                    />
-                    <div className="infos">
-                      <p>{item.name ? item.name : item.title}</p>
-                      <span>
-                        <FaStar size={15} />
-                        <p>{FormatNote(item.vote_average)}</p>
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
+            participant.profile_path && (
+              <div key={participant.id} className="participant">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${participant.profile_path}`}
+                  alt={`${participant.profile_path} image`}
+                />
+                <div>
+                  <p className="name">{participant.name}</p>
+                  <p className="character">{participant.character}</p>
+                </div>
+              </div>
             )
           );
         })}
@@ -98,7 +89,7 @@ export function CardList({ title, list, type }: ICardListProps) {
         >
           <MdChevronRight size={40} />
         </ListControllerRight>
-      </section>
-    </Cardlist>
+      </Content>
+    </Container>
   );
 }
