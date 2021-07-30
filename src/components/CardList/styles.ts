@@ -44,7 +44,7 @@ export const Cardlist = styled.div<CardListProps>`
 
     .list_controller {
       position: absolute;
-      padding: 1rem;
+      padding: 0.2rem;
 
       align-items: center;
       justify-content: center;
@@ -54,9 +54,9 @@ export const Cardlist = styled.div<CardListProps>`
       opacity: 0;
       transition: opacity 0.2s ease-in;
       border-radius: 50%;
+
       svg {
-        position: absolute;
-        font-size: 2rem;
+        color: var(--title);
       }
     }
 
@@ -68,7 +68,6 @@ export const Cardlist = styled.div<CardListProps>`
         .infos {
           visibility: visible;
           opacity: 1;
-          z-index: 9999;
         }
         img {
           filter: brightness(0.3);

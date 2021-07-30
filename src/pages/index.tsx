@@ -44,7 +44,6 @@ export default function Home({
   const topRatedMovies: MovieType[] = topRated.results;
   const popularTv: TvType[] = popularTV.results;
   const topRatedTv: TvType[] = topRatedTV.results;
-  console.log(topRatedTv);
 
   return (
     <Container>

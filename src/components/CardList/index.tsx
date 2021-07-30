@@ -72,9 +72,9 @@ export function CardList({ title, list, type }: ICardListProps) {
         {list.map((item) => {
           return (
             item.backdrop_path && (
-              <div key={item.id} className="movie">
-                <Link href={`/${type}/${item.id}`}>
-                  <a>
+              <Link href={`/${type}/${item.id}`} key={item.id}>
+                <a>
+                  <div className="movie">
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
                       alt={item.name}
@@ -86,9 +86,9 @@ export function CardList({ title, list, type }: ICardListProps) {
                         <p>{FormatNote(item.vote_average)}</p>
                       </span>
                     </div>
-                  </a>
-                </Link>
-              </div>
+                  </div>
+                </a>
+              </Link>
             )
           );
         })}
