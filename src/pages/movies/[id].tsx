@@ -5,23 +5,42 @@ import { VideosType } from "../../types/videos";
 import { CreditsType } from "../../types/credits";
 import { Container, Highlight, Content } from "../../styles/movie";
 import { FormatRuntime } from "../../utils/FormatRuntime";
-import { MdPlayArrow, MdAdd, MdMoneyOff, MdAttachMoney } from "react-icons/md";
-import { IoMdEyeOff } from "react-icons/io";
+import {
+  MdPlayArrow,
+  MdAdd,
+  MdMoneyOff,
+  MdAttachMoney,
+  MdExpandMore,
+  MdExpandLess,
+} from "react-icons/md";
 import { usePlayer } from "../../hooks/usePlayer";
 import { VideoPlayer } from "../../components/VideoPlayer";
 import { FaStar } from "react-icons/fa";
-import { useState } from "react";
 import { FormatValue } from "../../utils/FormatValue";
-import { Cast } from "../../components/Cast";
+import { ProviderType } from "../../types/providers";
+import { RecommendationsType } from "../../types/recommendations";
+import Link from "next/link";
+import { useState } from "react";
 
 type PropsType = {
   details: DetailsType;
   videos: VideosType;
   credits: CreditsType;
+  providers: ProviderType;
+  recommendations: RecommendationsType;
 };
 
-export default function Movie({ details, videos, credits }: PropsType) {
+export default function Movie({
+  details,
+  videos,
+  credits,
+  providers,
+  recommendations,
+}: PropsType) {
   const { showPlayer, hidePlayer, openPlayer } = usePlayer();
+  const [showRecommendations, updateRecommendations] = useState(6);
+
+  const provider = providers.results.BR;
 
   return (
     <>
@@ -47,27 +66,21 @@ export default function Movie({ details, videos, credits }: PropsType) {
             </div>
           </div>
 
-          <div className="infos">
-            <p>{FormatRuntime(details.runtime)}</p>
-            <p>{details.release_date}</p>
-            <div>
-              {details.genres.map((genre) => {
-                return <span key={genre.id}>{genre.name}</span>;
-              })}
-            </div>
-          </div>
-
           <div className="finance">
             <div>
               <p>
                 <MdMoneyOff size={25} color="#FF3333" />
-                {FormatValue(details.budget)}
+                {FormatValue(details.budget) === "$0.00"
+                  ? "?"
+                  : FormatValue(details.budget)}
               </p>
             </div>
             <div>
               <p>
                 <MdAttachMoney size={25} color="#52DB6B" />
-                {FormatValue(details.revenue)}
+                {FormatValue(details.revenue) === "$0.00"
+                  ? "?"
+                  : FormatValue(details.revenue)}
               </p>
             </div>
           </div>
@@ -79,35 +92,131 @@ export default function Movie({ details, videos, credits }: PropsType) {
                 Trailer
               </button>
             )}
-            <button className="watchlist">Adicionar à watchlist</button>
+            <button className="watchlist">
+              <MdAdd size={25} />
+            </button>
           </div>
         </Highlight>
 
         <Content>
-          <div className="details">
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
-              alt=""
-              className="poster"
-            />
+          <section>
+            <div className="details">
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
+                alt=""
+                className="poster"
+              />
 
-            <a href={details.homepage} target="_blank" rel="noreferrer">
-              <button>
-                <p>Página oficial</p>
-              </button>
-            </a>
-          </div>
-
-          <main className="hero">
-            <div>
-              <div>
-                <h1>Sinopse</h1>
-              </div>
-              <p>{details.overview}</p>
+              <a href={details.homepage} target="_blank" rel="noreferrer">
+                <button>
+                  <p>Página oficial</p>
+                </button>
+              </a>
             </div>
-          </main>
+
+            <main className="hero">
+              <div>
+                <h1>Informações</h1>
+                <div>
+                  <p>
+                    <span>Sinopse: </span>
+                    {details.overview}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span>Duração: </span>
+                    {FormatRuntime(details.runtime)}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span>Data de lançamento: </span>
+                    {details.release_date}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span>Genêros: </span>
+                    {details.genres.map((genre, index) => {
+                      return index !== details.genres.length - 1
+                        ? " " + genre.name + ","
+                        : " " + genre.name + ".";
+                    })}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span>Elenco:</span>
+                    {credits.cast.slice(0, 10).map((participant, index) => {
+                      return index !== 9
+                        ? " " + participant.name + ","
+                        : " " + participant.name + "...";
+                    })}
+                  </p>
+                </div>
+              </div>
+
+              {provider && (
+                <div className="provider">
+                  <h1>Disponível em:</h1>
+                  <a href={provider.link} target="_blank" rel="noreferrer">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${provider.flatrate[0].logo_path}`}
+                      alt=""
+                    />
+                  </a>
+                </div>
+              )}
+            </main>
+          </section>
+
+          <div className="recommendations">
+            <h1>Recomendados</h1>
+            <div>
+              {recommendations.results
+                .slice(0, showRecommendations)
+                .map((recommendation) => {
+                  return (
+                    <Link
+                      href={`/movies/${recommendation.id}`}
+                      key={recommendation.id}
+                    >
+                      <a>
+                        <div className="recommendation">
+                          <img
+                            src={`https://image.tmdb.org/t/p/w500/${recommendation.backdrop_path}`}
+                            alt=""
+                          />
+                          <div>
+                            <h1>{recommendation.title}</h1>
+                            <p>{recommendation.overview}</p>
+                          </div>
+                        </div>
+                      </a>
+                    </Link>
+                  );
+                })}
+            </div>
+          </div>
+          <div className="expand">
+            {showRecommendations === recommendations.results.length ? (
+              <MdExpandLess
+                size={40}
+                onClick={() => updateRecommendations(6)}
+              />
+            ) : (
+              <MdExpandMore
+                size={40}
+                onClick={() =>
+                  updateRecommendations(
+                    showRecommendations + recommendations.results.length - 6
+                  )
+                }
+              />
+            )}
+          </div>
         </Content>
-        <Cast cast={credits.cast} />
       </Container>
     </>
   );
@@ -128,11 +237,21 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     `http://api.themoviedb.org/3/movie/${id}/credits?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
   ).then((res) => res.json());
 
+  const providers = await fetch(
+    `http://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
+  ).then((res) => res.json());
+
+  const recommendations = await fetch(
+    `http://api.themoviedb.org/3/movie/${id}/recommendations?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
+  ).then((res) => res.json());
+
   return {
     props: {
       details,
       videos,
       credits,
+      providers,
+      recommendations,
     },
   };
 };

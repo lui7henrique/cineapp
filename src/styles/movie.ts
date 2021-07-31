@@ -12,7 +12,7 @@ export const Highlight = styled.div<HighlightType>`
   width: 100%;
   height: 50vh;
   padding: 10rem 5rem;
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
     ${(props) =>
       `url(https://image.tmdb.org/t/p/original/${props.backdrop_path})`};
   /* background-image: ${(props) =>
@@ -49,30 +49,6 @@ export const Highlight = styled.div<HighlightType>`
     }
   }
 
-  .infos {
-    margin-top: 1rem;
-
-    p {
-      padding-right: 1rem;
-      border-right: 1.5px solid var(--title);
-    }
-
-    div {
-      span {
-        margin-right: 1rem;
-      }
-      span + span::before {
-        content: "";
-        width: 4px;
-        height: 4px;
-        border-radius: 2px;
-        background: #ddd;
-        position: absolute;
-        transform: translate(-250%, 250%);
-      }
-    }
-  }
-
   button {
     border: none;
     outline: none;
@@ -105,13 +81,11 @@ export const Highlight = styled.div<HighlightType>`
 
     &.watchlist {
       background: none;
-      border: 2px solid var(--title);
+      border: 3px solid var(--title);
       color: var(--title);
+      border-radius: 50%;
       cursor: not-allowed;
-      padding: 0.5rem 1.5rem;
-      @media (max-width: 500px) {
-        padding: 0.7rem 1.5rem;
-      }
+      padding: 0.2rem;
     }
   }
 
@@ -127,10 +101,25 @@ export const Highlight = styled.div<HighlightType>`
 `;
 
 export const Content = styled.div`
-  padding: 3rem 5rem;
+  max-width: 1180px;
+  margin: 2rem auto;
+  padding: 1rem;
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
-  gap: 3rem;
+  section {
+    display: flex;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+    }
+    gap: 2rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
 
   @media (max-width: 500px) {
     display: flex;
@@ -141,18 +130,19 @@ export const Content = styled.div`
   .poster {
     border-radius: 5px;
     width: 300px;
+    opacity: 0.5;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      opacity: 1;
+    }
 
     @media (max-width: 800px) {
       width: 100%;
     }
   }
 
-  .company {
-    width: 100px;
-  }
-
   .details {
-    max-width: 300px;
     button {
       width: 100%;
       width: 100%;
@@ -165,7 +155,6 @@ export const Content = styled.div`
       font-weight: bold;
       border-radius: 5px;
       transition: all 0.2s ease-in-out;
-      margin-top: 1rem;
 
       &:hover {
         filter: brightness(0.8);
@@ -173,33 +162,113 @@ export const Content = styled.div`
     }
   }
 
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .hero {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
 
     div {
-      h1 {
-        margin-right: 1rem;
-        margin-bottom: 0.5rem;
+      display: flex;
+      line-height: 1.5rem;
+
+      .release_date {
+        margin-left: 1rem;
       }
 
-      div {
-        display: flex;
-        align-items: center;
+      span {
+        opacity: 0.3;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: bold;
       }
     }
+    .provider {
+      img {
+        width: 80px;
+        border-radius: 5px;
+        filter: brightness(0.5);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
 
-    p {
-      line-height: 1.5rem;
-      text-align: justify;
-      text-justify: inter-word;
+        &:hover {
+          filter: brightness(1);
+        }
+      }
     }
   }
 
-  .video {
-    h1 {
-      margin-bottom: 0.5rem;
+  .recommendations {
+    div {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      @media (max-width: 500px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 450px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .recommendation {
+        display: flex;
+        flex-direction: column;
+        background: var(--shape);
+        gap: 0rem;
+        border-radius: 5px;
+        cursor: pointer;
+        filter: brightness(0.7);
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.01);
+          filter: brightness(1);
+        }
+
+        div {
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
+          gap: 0;
+
+          h1 {
+            font-size: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        img {
+          width: 100%;
+          border-radius: 5px 5px 0 0;
+        }
+      }
+    }
+  }
+
+  .expand {
+    align-items: center;
+
+    svg {
+      cursor: pointer;
     }
   }
 `;
