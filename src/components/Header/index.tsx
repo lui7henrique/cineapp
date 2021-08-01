@@ -91,14 +91,14 @@ export function Header() {
       </div>
       <div className="profile">
         <div>
-          <p>Luiz Henrique</p>
+          <p>Diego Fernandes</p>
           <div className="progress">
             <span className="progress-bar"></span>
           </div>
         </div>
         <img
           src="https://cdn.discordapp.com/attachments/368474985678897152/869387534285803530/unknown.png"
-          alt="Diego"
+          alt="Luiz Henrique"
         />
       </div>
     </HeaderStyles>

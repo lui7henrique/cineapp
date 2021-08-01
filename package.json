@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "icons": "^1.0.0",
+    "luxon": "^2.0.1",
     "next": "11.0.1",
     "react": "^17.0.2",
     "react-dom": "17.0.2",
@@ -19,6 +20,7 @@
     "swiper": "^6.8.0"
   },
   "devDependencies": {
+    "@types/luxon": "^1.27.1",
     "@types/react": "17.0.14",
     "@types/styled-components": "^5.1.11",
     "eslint": "7.30.0",

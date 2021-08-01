@@ -19,6 +19,11 @@ export const Highlight = styled.div<HighlightType>`
     `url(https://image.tmdb.org/t/p/original/${props.backdrop_path})`}; */
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+
+  @media (max-width: 800px) {
+    background-position: 50% 0;
+  }
 
   @media (max-width: 500px) {
     padding: 10rem 2.5rem;
@@ -190,11 +195,12 @@ export const Content = styled.div`
     }
     .provider {
       img {
-        width: 80px;
+        width: 50px;
         border-radius: 5px;
         filter: brightness(0.5);
         transition: all 0.2s ease-in-out;
         cursor: pointer;
+        margin-right: 1rem;
 
         &:hover {
           filter: brightness(1);
@@ -269,6 +275,72 @@ export const Content = styled.div`
 
     svg {
       cursor: pointer;
+      transition: all 0.2s ease-in;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+
+  .similar {
+    div {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      @media (max-width: 500px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 450px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .recommendation {
+        display: flex;
+        flex-direction: column;
+        background: var(--shape);
+        gap: 0rem;
+        border-radius: 5px;
+        cursor: pointer;
+        filter: brightness(0.7);
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.01);
+          filter: brightness(1);
+        }
+
+        div {
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
+          gap: 0;
+
+          h1 {
+            font-size: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        img {
+          width: 100%;
+          border-radius: 5px 5px 0 0;
+        }
+      }
     }
   }
 `;

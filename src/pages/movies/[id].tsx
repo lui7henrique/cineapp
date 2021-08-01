@@ -20,7 +20,9 @@ import { FormatValue } from "../../utils/FormatValue";
 import { ProviderType } from "../../types/providers";
 import { RecommendationsType } from "../../types/recommendations";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FormatNote } from "../../utils/FormatNote";
+import { DateTime } from "luxon";
 
 type PropsType = {
   details: DetailsType;
@@ -28,6 +30,7 @@ type PropsType = {
   credits: CreditsType;
   providers: ProviderType;
   recommendations: RecommendationsType;
+  similar: RecommendationsType;
 };
 
 export default function Movie({
@@ -36,11 +39,32 @@ export default function Movie({
   credits,
   providers,
   recommendations,
+  similar,
 }: PropsType) {
   const { showPlayer, hidePlayer, openPlayer } = usePlayer();
   const [showRecommendations, updateRecommendations] = useState(6);
+  const [showSimilar, updateSimilar] = useState(6);
+  const note = FormatNote(details.vote_average);
+  const noteArray = [];
 
   const provider = providers.results.BR;
+  useEffect(() => {
+    updateRecommendations(6);
+    updateSimilar(6);
+  }, [recommendations, similar]);
+
+  for (var i = 0; i < note; i++) {
+    noteArray.push(i);
+    // more statements
+  }
+
+  console.log(
+    DateTime.now()
+      .setZone("America/New_York")
+      .minus({ weeks: 1 })
+      .endOf("day")
+      .toISO()
+  );
 
   return (
     <>
@@ -56,12 +80,9 @@ export default function Movie({
           <h1>{details.title}</h1>
           <div>
             <div className="note">
-              <FaStar className="completed" size={20} />
-              <FaStar className="completed" size={20} />
-              <FaStar className="completed" size={20} />
-              <FaStar className="completed" size={20} />
-              <FaStar size={20} />
-              {/* {FormatNote(details.vote_average)} */}
+              {noteArray.map((note, index) => {
+                return <FaStar className="completed" size={20} key={index} />;
+              })}
               <p>({details.vote_count} votos)</p>
             </div>
           </div>
@@ -161,10 +182,26 @@ export default function Movie({
                 <div className="provider">
                   <h1>Disponível em:</h1>
                   <a href={provider.link} target="_blank" rel="noreferrer">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${provider.flatrate[0].logo_path}`}
-                      alt=""
-                    />
+                    {provider.flatrate
+                      ? provider.flatrate.map((item) => {
+                          return (
+                            <img
+                              src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
+                              alt=""
+                              key={item.provider_id}
+                            />
+                          );
+                        })
+                      : provider.rent &&
+                        provider.rent.map((item) => {
+                          return (
+                            <img
+                              src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
+                              alt=""
+                              key={item.provider_id}
+                            />
+                          );
+                        })}
                   </a>
                 </div>
               )}
@@ -216,6 +253,42 @@ export default function Movie({
               />
             )}
           </div>
+
+          <div className="similar">
+            <h1>Semelhantes</h1>
+            <div>
+              {similar.results.slice(0, showSimilar).map((movie) => {
+                return (
+                  <Link href={`/movies/${movie.id}`} key={movie.id}>
+                    <a>
+                      <div className="recommendation">
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                          alt=""
+                        />
+                        <div>
+                          <h1>{movie.title}</h1>
+                          <p>{movie.overview}</p>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+          <div className="expand">
+            {showSimilar === similar.results.length ? (
+              <MdExpandLess size={40} onClick={() => updateSimilar(6)} />
+            ) : (
+              <MdExpandMore
+                size={40}
+                onClick={() =>
+                  updateSimilar(showSimilar + similar.results.length - 6)
+                }
+              />
+            )}
+          </div>
         </Content>
       </Container>
     </>
@@ -245,6 +318,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     `http://api.themoviedb.org/3/movie/${id}/recommendations?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
   ).then((res) => res.json());
 
+  const similar = await fetch(
+    `http://api.themoviedb.org/3/movie/${id}/similar?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
+  ).then((res) => res.json());
+
   return {
     props: {
       details,
@@ -252,6 +329,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       credits,
       providers,
       recommendations,
+      similar,
     },
   };
 };
