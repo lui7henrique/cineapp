@@ -40,8 +40,6 @@ export function Banner({
     noteArray.push(i);
   }
 
-  console.log(budget);
-
   return (
     <Highlight backdrop_path={backdrop_path}>
       {showPlayer && (
@@ -67,7 +65,7 @@ export function Banner({
             {episodes && <p> • {episodes} Episódios</p>}
           </div>
         </div>
-        {budget !== 0 && (
+        {budget && budget > 0 && (
           <div className="finance">
             <div>
               <p>

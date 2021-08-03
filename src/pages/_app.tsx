@@ -20,8 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     setIsLoading(false);
   });
 
-  console.log(isLoading);
-
   return (
     <>
       <PlayerProvider>
