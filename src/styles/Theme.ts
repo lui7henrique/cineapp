@@ -65,7 +65,7 @@ body::-webkit-scrollbar-thumb {
 
 .loader {
   position: fixed;
-  top: 45%;
-  left: 45%;
+  top: 47%;
+  left: 47%;
 }
 `;

@@ -7,7 +7,6 @@ type HighlightType = {
 export const Highlight = styled.div<HighlightType>`
   width: 100%;
   height: 50vh;
-  padding: 10rem 5rem;
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
     ${(props) =>
       `url(https://image.tmdb.org/t/p/original/${props.backdrop_path})`};
@@ -16,6 +15,7 @@ export const Highlight = styled.div<HighlightType>`
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  padding: auto;
 
   @media (max-width: 800px) {
     background-position: 50% 0;
@@ -32,11 +32,19 @@ export const Highlight = styled.div<HighlightType>`
       display: none;
     }
   }
-
   > div {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    flex-direction: column;
+    max-width: 1180px;
+    margin: auto;
+    vertical-align: middle;
+    padding: 15vh 1rem 1rem 1rem;
+
+    > div {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
   }
 
   .note {
