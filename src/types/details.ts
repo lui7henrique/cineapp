@@ -1,12 +1,16 @@
 export type DetailsType = {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: null;
+  belongs_to_collection?: {
+    id: number;
+    name: string;
+    poster_path: string;
+    backdrop_path: string;
+  };
   budget: number;
   homepage: string;
   genres: Genre[];
   id: number;
-  imdb_id: string;
   original_language: string;
   original_title: string;
   production_companies: ProductionCompany[];

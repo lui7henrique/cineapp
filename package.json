@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "date-fns": "^2.23.0",
+    "firebase": "^8.8.1",
     "icons": "^1.0.0",
     "luxon": "^2.0.1",
     "next": "11.0.1",

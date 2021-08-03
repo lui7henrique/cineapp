@@ -34,7 +34,6 @@ export function Cast({ cast }: IInterfaceProps) {
   function handleRightArrowClick() {
     const listWidth = cast.length * 150;
     let x = axisX - Math.round(window.innerWidth / 2);
-    console.log(window.innerWidth - listWidth, x);
 
     if (window.innerWidth - listWidth > x) {
       const blankSpace = window.innerWidth > 800 ? 80 : 16;

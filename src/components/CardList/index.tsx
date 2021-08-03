@@ -36,7 +36,6 @@ export function CardList({ title, list, type }: ICardListProps) {
   function handleRightArrowClick() {
     const listWidth = list.length * 309.5;
     let x = axisX - Math.round(window.innerWidth / 2);
-    console.log(`x: ${x} e listWidth: ${listWidth}`);
 
     if (window.innerWidth - listWidth > x) {
       const blankSpace = window.innerWidth > 800 ? 80 : 16;

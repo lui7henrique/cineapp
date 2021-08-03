@@ -12,7 +12,7 @@ export const Header = styled.header`
   z-index: 99999999;
   height: 5rem;
 
-  button {
+  .hamburger {
     background: none;
     border: none;
 
@@ -133,6 +133,22 @@ export const Header = styled.header`
         background-size: 300% 100%;
         animation: progress-animation 2s linear infinite;
       }
+    }
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--primary);
+    border: none;
+    color: var(--title);
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.2s ease-in;
+    &:hover {
+      filter: brightness(0.8);
     }
   }
 `;

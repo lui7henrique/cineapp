@@ -11,9 +11,11 @@ import {
 } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
+import { useAuth } from "../../hooks/useAuth";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signInWithGoogle } = useAuth();
 
   const { asPath } = useRouter();
 
@@ -23,7 +25,7 @@ export function Header() {
 
   return (
     <HeaderStyles>
-      <button onClick={() => setIsOpen(!isOpen)}>
+      <button onClick={() => setIsOpen(!isOpen)} className="hamburger">
         <MdMenu size={40} />
       </button>
 
@@ -89,18 +91,22 @@ export function Header() {
           </Link>
         </nav>
       </div>
-      <div className="profile">
-        <div>
-          <p>Diego Fernandes</p>
-          <div className="progress">
-            <span className="progress-bar"></span>
+      {!user ? (
+        <button className="login" onClick={() => signInWithGoogle()}>
+          <img src="google.svg" alt="Google" />
+          Login com o Google
+        </button>
+      ) : (
+        <div className="profile">
+          <div>
+            <p>{user.name}</p>
+            {/* <div className="progress">
+              <span className="progress-bar"></span>
+            </div> */}
           </div>
+          <img src={user.avatar} alt={user.name} />
         </div>
-        <img
-          src="https://cdn.discordapp.com/attachments/368474985678897152/869387534285803530/unknown.png"
-          alt="Luiz Henrique"
-        />
-      </div>
+      )}
     </HeaderStyles>
   );
 }
