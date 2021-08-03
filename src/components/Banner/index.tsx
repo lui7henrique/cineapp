@@ -40,6 +40,7 @@ export function Banner({
     noteArray.push(i);
   }
 
+  console.log(budget, revenue);
   return (
     <Highlight backdrop_path={backdrop_path}>
       {showPlayer && (
@@ -65,22 +66,20 @@ export function Banner({
             {episodes && <p> • {episodes} Episódios</p>}
           </div>
         </div>
-        {budget && budget > 0 && (
-          <div className="finance">
-            <div>
-              <p>
-                <MdMoneyOff size={25} color="#FF3333" />
-                {FormatValue(budget) === "$0.00" ? "?" : FormatValue(budget)}
-              </p>
-            </div>
-            <div>
-              <p>
-                <MdAttachMoney size={25} color="#52DB8B" />
-                {FormatValue(revenue) === "$0.00" ? "?" : FormatValue(revenue)}
-              </p>
-            </div>
+        <div className="finance">
+          <div>
+            <p>
+              <MdMoneyOff size={25} color="#FF3333" />
+              {budget === 0 ? "?" : FormatValue(budget)}
+            </p>
           </div>
-        )}
+          <div>
+            <p>
+              <MdAttachMoney size={25} color="#52DB8B" />
+              {revenue === 0 ? "?" : FormatValue(revenue)}
+            </p>
+          </div>
+        </div>
         <div>
           {videos?.results[0] && (
             <button className="trailer" onClick={openPlayer}>
