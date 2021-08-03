@@ -6,7 +6,7 @@ type HighlightType = {
 
 export const Highlight = styled.div<HighlightType>`
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
     ${(props) =>
       `url(https://image.tmdb.org/t/p/original/${props.backdrop_path})`};
@@ -25,20 +25,13 @@ export const Highlight = styled.div<HighlightType>`
     margin-top: -0.5rem;
   }
 
-  @media (max-width: 500px) {
-    padding: 10rem 2.5rem;
-    .infos,
-    .finance {
-      display: none;
-    }
-  }
-  > div {
+  .infos {
     display: flex;
     flex-direction: column;
     max-width: 1180px;
     margin: auto;
     vertical-align: middle;
-    padding: 15vh 1rem 1rem 1rem;
+    padding: 20vh 1rem 1rem 1rem;
 
     > div {
       display: flex;

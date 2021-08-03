@@ -28,13 +28,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AuthContextProvider>
           <GlobalStyles />
           <Header />
-
           {isLoading ? (
             <ReactLoading
               type={"spin"}
               color="var(--primary)"
-              height={300}
-              width={150}
+              height={150}
+              width={75}
               className="loader"
             />
           ) : (

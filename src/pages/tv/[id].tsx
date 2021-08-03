@@ -25,8 +25,6 @@ export default function TV({
   similar,
   season,
 }: ITVProps) {
-  console.log(details);
-
   return (
     <Container>
       <title>{details.name}</title>

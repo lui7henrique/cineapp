@@ -40,6 +40,8 @@ export function Banner({
     noteArray.push(i);
   }
 
+  console.log(budget);
+
   return (
     <Highlight backdrop_path={backdrop_path}>
       {showPlayer && (
@@ -47,7 +49,7 @@ export function Banner({
           url={`https://www.youtube.com/watch?v=${videos?.results[0].key}`}
         />
       )}
-      <div>
+      <div className="infos">
         <h1>{title}</h1>
         {tagline && <p className="tagline">{tagline}</p>}
         <div>
@@ -65,8 +67,7 @@ export function Banner({
             {episodes && <p> • {episodes} Episódios</p>}
           </div>
         </div>
-
-        {budget && (
+        {budget !== 0 && (
           <div className="finance">
             <div>
               <p>
@@ -82,7 +83,6 @@ export function Banner({
             </div>
           </div>
         )}
-
         <div>
           {videos?.results[0] && (
             <button className="trailer" onClick={openPlayer}>

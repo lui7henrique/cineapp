@@ -10,19 +10,30 @@ import {
   MdSearch,
   MdTv,
 } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import { useAuth } from "../../hooks/useAuth";
+import { useRouter as nextRouter } from "next/router";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, signInWithGoogle } = useAuth();
+  const [query, updateQuery] = useState("");
 
   const { asPath } = useRouter();
+  const router = nextRouter();
 
   useEffect(() => {
     setIsOpen(false);
   }, [asPath]);
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    if (query.trim() === "") return;
+
+    router.push(`/search/${query}`);
+  }
 
   return (
     <HeaderStyles>
@@ -37,7 +48,7 @@ export function Header() {
           </button>
 
           <nav>
-            <Link href="/">
+            <Link href="/s">
               <a href="">
                 <MdHome />
                 <p>Home</p>
@@ -91,9 +102,13 @@ export function Header() {
             </a>
           </Link>
         </nav>
-        <form action="" className="search">
+        <form onSubmit={handleSubmit} className="search">
           <MdSearch size={20} />
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={(event) => updateQuery(event.target.value)}
+          />
         </form>
       </div>
       {!user ? (

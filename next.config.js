@@ -9,5 +9,6 @@ module.exports = {
     MESSAGING_SENDER_ID: "978114159956",
     APP_ID: "1:978114159956:web:81a82d9fc02ae0aba594c1",
     MEASUREMENT_ID: "G-JE5Z3W6NGT",
+    IMBD_KEY: "90f2b425e5ff1b801ed9dccf4bafadde",
   },
 };
