@@ -34,7 +34,7 @@ export function CardList({ title, list, type }: ICardListProps) {
   }
 
   function handleRightArrowClick() {
-    const listWidth = list.length * 309.5;
+    const listWidth = list.length * 310;
     let x = axisX - Math.round(window.innerWidth / 2);
 
     if (window.innerWidth - listWidth > x) {
@@ -51,7 +51,7 @@ export function CardList({ title, list, type }: ICardListProps) {
 
   useEffect(() => {
     const paddingLeft = window.innerWidth > 800 ? 80 : 28;
-    const listWidth = list.length * 309.5;
+    const listWidth = list.length * 310;
 
     if (window.innerWidth - paddingLeft > listWidth) {
       setShowRightArrow(false);
@@ -69,26 +69,42 @@ export function CardList({ title, list, type }: ICardListProps) {
           <MdChevronLeft size={40} />
         </ListControllerLeft>
         {list.map((item) => {
-          return (
-            item.backdrop_path && (
-              <Link href={`/${type}/${item.id}`} key={item.id}>
-                <a>
-                  <div className="movie">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                      alt={item.name}
-                    />
-                    <div className="infos">
-                      <p>{item.name ? item.name : item.title}</p>
-                      <span>
-                        <FaStar size={15} />
-                        <p>{FormatNote(item.vote_average)}</p>
-                      </span>
-                    </div>
+          return item.backdrop_path ? (
+            <Link href={`/${type}/${item.id}`} key={item.id}>
+              <a>
+                <div className="movie">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                    alt={item.name}
+                  />
+                  <div className="infos">
+                    <p>{item.name ? item.name : item.title}</p>
+                    <span>
+                      <FaStar size={15} />
+                      <p>{FormatNote(item.vote_average)}</p>
+                    </span>
                   </div>
-                </a>
-              </Link>
-            )
+                </div>
+              </a>
+            </Link>
+          ) : (
+            <Link href={`/${type}/${item.id}`} key={item.id}>
+              <a>
+                <div className="movie">
+                  <img
+                    src="https://i.ibb.co/2dkrb1N/Screenshot-6.jpg"
+                    alt={item.name}
+                  />
+                  <div className="infos">
+                    <p>{item.name ? item.name : item.title}</p>
+                    <span>
+                      <FaStar size={15} />
+                      <p>{FormatNote(item.vote_average)}</p>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </Link>
           );
         })}
         <ListControllerRight

@@ -7,6 +7,7 @@ import {
   MdList,
   MdLocalMovies,
   MdMenu,
+  MdSearch,
   MdTv,
 } from "react-icons/md";
 import { useEffect, useState } from "react";
@@ -90,10 +91,14 @@ export function Header() {
             </a>
           </Link>
         </nav>
+        <form action="" className="search">
+          <MdSearch size={20} />
+          <input type="text" placeholder="Search" />
+        </form>
       </div>
       {!user ? (
         <button className="login" onClick={() => signInWithGoogle()}>
-          <img src="google.svg" alt="Google" />
+          <img src="google-icon.svg" alt="Google" />
           Login com o Google
         </button>
       ) : (

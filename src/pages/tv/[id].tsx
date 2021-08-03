@@ -25,12 +25,7 @@ export default function TV({
   similar,
   season,
 }: ITVProps) {
-  console.log(season);
-
-  const release = parseISO(details.first_air_date);
-  const formattedRelease = format(release, "dd 'de' MMMM 'de' yyyy", {
-    locale: brazilLocale,
-  });
+  console.log(details);
 
   return (
     <Container>
@@ -87,7 +82,14 @@ export default function TV({
               </p>
               <p>
                 <strong>Lançamento: </strong>
-                {formattedRelease}
+                {details.first_air_date !== null &&
+                  format(
+                    parseISO(details.first_air_date),
+                    "dd 'de' MMMM 'de' yyyy",
+                    {
+                      locale: brazilLocale,
+                    }
+                  )}
               </p>
             </section>
           </article>

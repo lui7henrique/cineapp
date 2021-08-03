@@ -62,4 +62,10 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px; /* roundness of the scroll thumb */
   border: 3px solid var(--primary); /* creates padding around scroll thumb */
 }
+
+.loader {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+}
 `;

@@ -140,15 +140,31 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     gap: 1rem;
-    background-color: var(--primary);
+    background-color: #ea4335;
     border: none;
-    color: var(--title);
-    padding: 1rem;
+    color: white;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     font-weight: bold;
     transition: all 0.2s ease-in;
     &:hover {
       filter: brightness(0.8);
+    }
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    background: var(--background);
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+    border-radius: 5px;
+
+    input {
+      border: none;
+      background: none;
+      outline: none;
+      color: var(--title);
     }
   }
 `;

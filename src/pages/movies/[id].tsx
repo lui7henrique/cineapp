@@ -57,6 +57,7 @@ export default function Movie({
           vote_average={details.vote_average}
           vote_count={details.vote_count}
           videos={videos}
+          tagline={details.tagline}
         />
 
         <Content>

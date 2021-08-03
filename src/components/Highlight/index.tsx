@@ -36,23 +36,26 @@ export function Highlight({ movie, tv }: HighlightType) {
             </div>
           </a>
         </Link>
-
-        <div className="item">
-          <img
-            src={`https://image.tmdb.org/t/p/original/${tv.backdrop_path}`}
-            alt=""
-          />
-          <div className="infos">
-            <div>
-              <h1>{tv.name}</h1>
-              <span>
-                <FaStar size={30} />
-                {FormatNote(tv.vote_average)}
-              </span>
+        <Link href={`/tv/${tv.id}`}>
+          <a>
+            <div className="item">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${tv.backdrop_path}`}
+                alt=""
+              />
+              <div className="infos">
+                <div>
+                  <h1>{tv.name}</h1>
+                  <span>
+                    <FaStar size={30} />
+                    {FormatNote(tv.vote_average)}
+                  </span>
+                </div>
+                <p>{tv.overview}</p>
+              </div>
             </div>
-            <p>{tv.overview}</p>
-          </div>
-        </div>
+          </a>
+        </Link>
       </Content>
     </Container>
   );
