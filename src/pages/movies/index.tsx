@@ -1,9 +1,9 @@
-import { GetServerSideProps, GetStaticProps } from "next";
-import { useRouter } from "next/router";
-import { FormEvent, useState } from "react";
+import { GetStaticProps } from "next";
 import { CardList } from "../../components/CardList";
 import { api } from "../../services/api";
-import { Container, Content } from "../../styles/home";
+import { Container, Content } from "../../styles/movies";
+import Select from "react-select";
+import { useEffect, useState } from "react";
 
 type SimpleMovie = {
   id: number;
@@ -39,7 +39,6 @@ interface IMoviesProps {
 
 export default function Movies({
   trending,
-  nowPlaying,
   topRated,
   upComing,
   action,
@@ -58,38 +57,81 @@ export default function Movies({
   sciFi,
   western,
 }: IMoviesProps) {
-  const [genre, setGenre] = useState();
+  const [target, updateTarget] = useState<{
+    value: any;
+    label: string;
+  }>({
+    value: "all",
+    label: "Tudo",
+  });
 
-  // function handleSearchByGenre(e: FormEvent) {
-  //   e.preventDefault();
-  //   // router.push(`genre/${genre}`);
-  // }
+  const handleChange = (select: { value: string; label: string }) => {
+    updateTarget(select);
+    console.log(`Option selected:`, target);
+  };
+
+  const options = [
+    { value: "all", label: "Tudo" },
+    { value: action, label: "Ação" },
+    { value: adventure, label: "Aventura" },
+    { value: animation, label: "Animação" },
+    { value: comedy, label: "Comédia" },
+    { value: crime, label: "Crime" },
+    { value: documentary, label: "Documentário" },
+    { value: drama, label: "Drama" },
+    { value: family, label: "Família" },
+    { value: fantasy, label: "Fantasia" },
+    { value: history, label: "História" },
+    { value: horror, label: "Horror" },
+    { value: mistery, label: "Mistério" },
+    { value: romance, label: "Romance" },
+    { value: sciFi, label: "Ficção Científica" },
+    { value: western, label: "Faroeste" },
+  ];
 
   return (
     <Container>
       <title>Cineapp | Filmes</title>
       <Content>
-        <h1>Filmes</h1>
-        <CardList list={trending} title="🔥 Tendência" type="movies" />
-        <CardList list={topRated} title="👌 Bem avaliados" type="movies" />
-        <CardList list={upComing} title="⏳ Em breve" type="movies" />
-        <CardList list={action} title="👊 Ação" type="movies" />
-        <CardList list={adventure} title="🌍 Aventura" type="movies" />
-        <CardList list={animation} title="💡 Animação" type="movies" />
-        <CardList list={comedy} title="🤣 Comédia" type="movies" />
-        <CardList list={crime} title="🚔 Crime" type="movies" />
-        <CardList list={documentary} title="📄 Documentário" type="movies" />
-        <CardList list={drama} title="🎭 Drama" type="movies" />
-        <CardList list={family} title="👪 Família" type="movies" />
-        <CardList list={fantasy} title="👻 Fantasia" type="movies" />
-        <CardList list={history} title="🛕 História" type="movies" />
-        <CardList list={horror} title="😱 Terror" type="movies" />
-        <CardList list={mistery} title="🤔 Mistério" type="movies" />
-        <CardList list={romance} title="🌹 Romance" type="movies" />
-        <CardList list={sciFi} title="👨‍🔬 Ficção científica" type="movies" />
-        <CardList list={western} title="🌵 Faroeste" type="movies" />
-        {/* hidden because it repeats movies
-        <CardList list={nowPlaying} title="⌚ Filmes atuais" type="movies" /> */}
+        <div className="title">
+          <h1>Filmes</h1>
+          <Select
+            // I changed the value of the select options to hold the lists of the genres
+            options={options}
+            placeholder="Genêros"
+            value={target}
+            onChange={handleChange}
+          />
+        </div>
+
+        {target.value === "all" ? (
+          <>
+            <CardList list={trending} title="🔥 Tendência" type="movies" />
+            <CardList list={topRated} title="👌 Bem avaliados" type="movies" />
+            <CardList list={upComing} title="⏳ Em breve" type="movies" />
+            <CardList list={action} title="👊 Ação" type="movies" />
+            <CardList list={adventure} title="🌍 Aventura" type="movies" />
+            <CardList list={animation} title="💡 Animação" type="movies" />
+            <CardList list={comedy} title="🤣 Comédia" type="movies" />
+            <CardList list={crime} title="🚔 Crime" type="movies" />
+            <CardList
+              list={documentary}
+              title="📄 Documentário"
+              type="movies"
+            />
+            <CardList list={drama} title="🎭 Drama" type="movies" />
+            <CardList list={family} title="👪 Família" type="movies" />
+            <CardList list={fantasy} title="👻 Fantasia" type="movies" />
+            <CardList list={history} title="🛕 História" type="movies" />
+            <CardList list={horror} title="😱 Terror" type="movies" />
+            <CardList list={mistery} title="🤔 Mistério" type="movies" />
+            <CardList list={romance} title="🌹 Romance" type="movies" />
+            <CardList list={sciFi} title="👨‍🔬 Ficção científica" type="movies" />
+            <CardList list={western} title="🌵 Faroeste" type="movies" />
+          </>
+        ) : (
+          <CardList list={target.value} title={target.label} type="movies" />
+        )}
       </Content>
     </Container>
   );
