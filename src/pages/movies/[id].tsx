@@ -34,6 +34,8 @@ export default function Movie({
   const note = FormatNote(details.vote_average);
   const noteArray = [];
 
+  console.log(recommendations);
+
   const provider = providers.results.BR;
   for (var i = 0; i < note; i++) {
     noteArray.push(i);
@@ -161,8 +163,12 @@ export default function Movie({
             </main>
           </section>
 
-          <Recommendations recommendations={recommendations} type="movies" />
-          <Similar similar={similar} type="movies" />
+          {recommendations.results.length > 1 && (
+            <Recommendations recommendations={recommendations} type="movies" />
+          )}
+          {similar.results.length > 1 && (
+            <Similar similar={similar} type="movies" />
+          )}
         </Content>
       </Container>
     </>

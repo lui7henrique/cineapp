@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable @next/next/no-img-element */
 import { GetServerSideProps } from "next";
 import { Banner } from "../../components/Banner";
@@ -9,6 +10,8 @@ import { Similar } from "../../components/Similar";
 import Link from "next/link";
 import { parseISO, format } from "date-fns";
 import brazilLocale from "date-fns/locale/pt";
+import { api } from "../../services/api";
+import { ProviderType } from "../../types/providers";
 
 interface ITVProps {
   details: DetailsTV;
@@ -16,6 +19,7 @@ interface ITVProps {
   recommendations: any;
   similar: any;
   season: any;
+  providers: ProviderType;
 }
 
 export default function TV({
@@ -24,7 +28,11 @@ export default function TV({
   recommendations,
   similar,
   season,
+  providers,
 }: ITVProps) {
+  const provider = providers.results.BR;
+  console.log(providers.results.BR);
+
   return (
     <Container>
       <title>{details.name}</title>
@@ -92,6 +100,36 @@ export default function TV({
                     }
                   )}
               </p>
+              <p>
+                <strong>Produtora: </strong>
+                {details.production_companies[0].name}
+              </p>
+            </section>
+            <section className="providers">
+              <h1>Onde assistir? </h1>
+
+              {provider && (
+                <div className="provider">
+                  <div>
+                    {provider.flatrate &&
+                      provider.flatrate.map((item) => {
+                        return (
+                          <a
+                            href={providers.results.BR.link}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img
+                              src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
+                              alt=""
+                              key={item.provider_id}
+                            />
+                          </a>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
             </section>
           </article>
         </main>

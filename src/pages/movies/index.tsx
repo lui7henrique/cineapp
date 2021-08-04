@@ -3,7 +3,7 @@ import { CardList } from "../../components/CardList";
 import { api } from "../../services/api";
 import { Container, Content } from "../../styles/movies";
 import Select from "react-select";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type SimpleMovie = {
   id: number;
@@ -136,7 +136,7 @@ export default function Movies({
         </div>
         {target.value === "all" ? (
           <>
-            <CardList list={trending} title="🔥 Tendência" type="movies" />
+            <CardList list={trending} title="🔥 Em alta" type="movies" />
             <CardList list={topRated} title="👌 Bem avaliados" type="movies" />
             <CardList list={upComing} title="⏳ Em breve" type="movies" />
             <CardList list={action} title="👊 Ação" type="movies" />

@@ -37,6 +37,24 @@ export const Content = styled.div`
       }
     }
 
+    article {
+      .providers {
+        h1 {
+          margin-top: 1rem;
+        }
+
+        div {
+          display: flex;
+          gap: 1rem;
+
+          img {
+            width: 50px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
     section {
       display: flex;
       flex-direction: column;

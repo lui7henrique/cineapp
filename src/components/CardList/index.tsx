@@ -11,7 +11,7 @@ import Link from "next/link";
 interface ICardListProps {
   title: string;
   list: MovieType[] | TvType[];
-  type: string;
+  type: "movies" | "tv";
 }
 
 export function CardList({ title, list, type }: ICardListProps) {
@@ -19,6 +19,9 @@ export function CardList({ title, list, type }: ICardListProps) {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
 
   const [showRightArrow, setShowRightArrow] = useState(true);
+
+  const filteredList = list.filter((item) => item.backdrop_path !== null);
+  console.log(filteredList);
 
   function handleLeftArrowClick() {
     let x = axisX + Math.round(window.innerWidth / 2);
@@ -34,7 +37,7 @@ export function CardList({ title, list, type }: ICardListProps) {
   }
 
   function handleRightArrowClick() {
-    const listWidth = list.length * 310;
+    const listWidth = filteredList.length * 310;
     let x = axisX - Math.round(window.innerWidth / 2);
 
     if (window.innerWidth - listWidth > x) {
@@ -51,12 +54,12 @@ export function CardList({ title, list, type }: ICardListProps) {
 
   useEffect(() => {
     const paddingLeft = window.innerWidth > 800 ? 80 : 28;
-    const listWidth = list.length * 310;
+    const listWidth = filteredList.length * 310;
 
     if (window.innerWidth - paddingLeft > listWidth) {
       setShowRightArrow(false);
     }
-  }, [list.length]);
+  }, [filteredList.length]);
 
   return (
     <Cardlist axisX={axisX}>
@@ -68,7 +71,7 @@ export function CardList({ title, list, type }: ICardListProps) {
         >
           <MdChevronLeft size={40} />
         </ListControllerLeft>
-        {list.map((item) => {
+        {filteredList.map((item) => {
           return item.backdrop_path ? (
             <Link href={`/${type}/${item.id}`} key={item.id}>
               <a>

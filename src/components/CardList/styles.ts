@@ -63,6 +63,7 @@ export const Cardlist = styled.div<CardListProps>`
     .movie {
       display: flex;
       flex-direction: column;
+      border-radius: 6px;
 
       &:hover {
         .infos {
