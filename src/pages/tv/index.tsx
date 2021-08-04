@@ -134,24 +134,42 @@ export default function Tv({
             onChange={handleChange as unknown as undefined}
           />
         </div>
-        <CardList list={popular} title="🔥 Em alta" type="tv" />
-        <CardList list={topRated} title="👌 Melhores avaliados" type="tv" />
-        <CardList list={current} title="📅 Atuais" type="tv" />
-        <CardList list={actionAdventure} title="👊 Ação e aventura" type="tv" />
-        <CardList list={animation} title="💡 Animação" type="tv" />
-        <CardList list={crime} title="🚔 Crime" type="tv" />
-        <CardList list={documentary} title="📄 Documentário" type="tv" />
-        <CardList list={drama} title="🎭 Drama" type="tv" />
-        <CardList list={family} title="👪 Família" type="tv" />
-        <CardList list={kids} title="🧒 Infantil" type="tv" />
-        <CardList list={mistery} title="🤔 Mistério" type="tv" />
-        <CardList list={news} title="📰 Notícias" type="tv" />
-        <CardList list={reality} title="👥 Reality Show" type="tv" />
-        <CardList list={sciFi} title="🧪 Ficção científica" type="tv" />
-        <CardList list={soap} title="📺 Novela" type="tv" />
-        <CardList list={talk} title="🔊 Talk show" type="tv" />
-        <CardList list={warPolitics} title="💣 Guerra e política" type="tv" />
-        <CardList list={western} title="🌵 Faroeste" type="tv" />
+        {target.value === "all" ? (
+          <>
+            <CardList list={popular} title="🔥 Em alta" type="tv" />
+            <CardList list={topRated} title="👌 Melhores avaliados" type="tv" />
+            <CardList list={current} title="📅 Atuais" type="tv" />
+            <CardList
+              list={actionAdventure}
+              title="👊 Ação e aventura"
+              type="tv"
+            />
+            <CardList list={animation} title="💡 Animação" type="tv" />
+            <CardList list={crime} title="🚔 Crime" type="tv" />
+            <CardList list={documentary} title="📄 Documentário" type="tv" />
+            <CardList list={drama} title="🎭 Drama" type="tv" />
+            <CardList list={family} title="👪 Família" type="tv" />
+            <CardList list={kids} title="🧒 Infantil" type="tv" />
+            <CardList list={mistery} title="🤔 Mistério" type="tv" />
+            <CardList list={news} title="📰 Notícias" type="tv" />
+            <CardList list={reality} title="👥 Reality Show" type="tv" />
+            <CardList list={sciFi} title="🧪 Ficção científica" type="tv" />
+            <CardList list={soap} title="📺 Novela" type="tv" />
+            <CardList list={talk} title="🔊 Talk show" type="tv" />
+            <CardList
+              list={warPolitics}
+              title="💣 Guerra e política"
+              type="tv"
+            />
+            <CardList list={western} title="🌵 Faroeste" type="tv" />
+          </>
+        ) : (
+          <CardList
+            list={SwitchTVGenre(target.value) as SimpleTv[]}
+            title={target.label}
+            type="tv"
+          />
+        )}
       </Content>
     </Container>
   );
