@@ -37,6 +37,25 @@ interface IMoviesProps {
   western: SimpleMovie[];
 }
 
+const options = [
+  { value: "all", label: "Tudo" },
+  { value: "action", label: "Ação" },
+  { value: "adventure", label: "Aventura" },
+  { value: "animation", label: "Animação" },
+  { value: "comedy", label: "Comédia" },
+  { value: "crime", label: "Crime" },
+  { value: "documentary", label: "Documentário" },
+  { value: "drama", label: "Drama" },
+  { value: "family", label: "Família" },
+  { value: "fantasy", label: "Fantasia" },
+  { value: "history", label: "História" },
+  { value: "horror", label: "Horror" },
+  { value: "mistery", label: "Mistério" },
+  { value: "romance", label: "Romance" },
+  { value: "sciFi", label: "Ficção Científica" },
+  { value: "western", label: "Velho oeste" },
+];
+
 export default function Movies({
   trending,
   topRated,
@@ -57,10 +76,7 @@ export default function Movies({
   sciFi,
   western,
 }: IMoviesProps) {
-  const [target, updateTarget] = useState<{
-    value: any;
-    label: string;
-  }>({
+  const [target, updateTarget] = useState<{ value: string; label: string }>({
     value: "all",
     label: "Tudo",
   });
@@ -70,24 +86,40 @@ export default function Movies({
     console.log(`Option selected:`, target);
   };
 
-  const options = [
-    { value: "all", label: "Tudo" },
-    { value: action, label: "Ação" },
-    { value: adventure, label: "Aventura" },
-    { value: animation, label: "Animação" },
-    { value: comedy, label: "Comédia" },
-    { value: crime, label: "Crime" },
-    { value: documentary, label: "Documentário" },
-    { value: drama, label: "Drama" },
-    { value: family, label: "Família" },
-    { value: fantasy, label: "Fantasia" },
-    { value: history, label: "História" },
-    { value: horror, label: "Horror" },
-    { value: mistery, label: "Mistério" },
-    { value: romance, label: "Romance" },
-    { value: sciFi, label: "Ficção Científica" },
-    { value: western, label: "Faroeste" },
-  ];
+  function SwitchMovieGenre(value: string) {
+    switch (value) {
+      case "action":
+        return action;
+      case "adventure":
+        return adventure;
+      case "animation":
+        return animation;
+      case "comedy":
+        return comedy;
+      case "crime":
+        return crime;
+      case "documentary":
+        return documentary;
+      case "drama":
+        return drama;
+      case "family":
+        return family;
+      case "fantasy":
+        return fantasy;
+      case "history":
+        return history;
+      case "horror":
+        return horror;
+      case "mistery":
+        return mistery;
+      case "romance":
+        return romance;
+      case "sciFi":
+        return sciFi;
+      case "western":
+        return western;
+    }
+  }
 
   return (
     <Container>
@@ -96,14 +128,12 @@ export default function Movies({
         <div className="title">
           <h1>Filmes</h1>
           <Select
-            // I changed the value of the select options to hold the lists of the genres
             options={options}
             placeholder="Genêros"
             value={target}
-            onChange={handleChange}
+            onChange={handleChange as unknown as undefined}
           />
         </div>
-
         {target.value === "all" ? (
           <>
             <CardList list={trending} title="🔥 Tendência" type="movies" />
@@ -130,7 +160,11 @@ export default function Movies({
             <CardList list={western} title="🌵 Faroeste" type="movies" />
           </>
         ) : (
-          <CardList list={target.value} title={target.label} type="movies" />
+          <CardList
+            list={SwitchMovieGenre(target.value) as SimpleMovie[]}
+            title={target.label}
+            type="movies"
+          />
         )}
       </Content>
     </Container>
