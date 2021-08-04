@@ -95,12 +95,14 @@ export function Header() {
               <p>TV</p>
             </a>
           </Link>
-          <Link href="/watchlist">
-            <a href="">
-              <MdList />
-              <p>Watchlist</p>
-            </a>
-          </Link>
+          {user && (
+            <Link href={`/watchlist/${user.id}`}>
+              <a href="">
+                <MdList />
+                <p>Watchlist</p>
+              </a>
+            </Link>
+          )}
         </nav>
         <form onSubmit={handleSubmit} className="search">
           <MdSearch size={20} />

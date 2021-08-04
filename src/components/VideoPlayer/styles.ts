@@ -10,7 +10,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 9999;
+  z-index: 3;
   > div {
     width: 1280px !important;
     height: 720px !important;

@@ -10,5 +10,5 @@ export const Content = styled.main`
   display: grid;
   grid-gap: 2rem;
   width: 100%;
-  padding-top: 5rem;
+  padding-top: 6rem;
 `;

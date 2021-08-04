@@ -18,6 +18,8 @@ export function CardList({ title, list, type }: ICardListProps) {
   const [axisX, setAxisX] = useState(0);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
 
+  console.log(axisX);
+
   const [showRightArrow, setShowRightArrow] = useState(true);
 
   function handleLeftArrowClick() {

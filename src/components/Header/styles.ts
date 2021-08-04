@@ -9,7 +9,7 @@ export const Header = styled.header`
   justify-content: space-between;
   padding: 1rem 2rem;
   background: var(--shape);
-  z-index: 99999999;
+  z-index: 2;
   height: 5rem;
 
   .hamburger {

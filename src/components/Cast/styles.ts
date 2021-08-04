@@ -42,7 +42,7 @@ export const Content = styled.div<IContentProps>`
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 999999;
+    z-index: 2;
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.2s ease-in;

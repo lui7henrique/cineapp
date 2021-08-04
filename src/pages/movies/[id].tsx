@@ -58,6 +58,9 @@ export default function Movie({
           vote_count={details.vote_count}
           videos={videos}
           tagline={details.tagline}
+          id={details.id}
+          poster_path={details.poster_path}
+          type="movie"
         />
 
         <Content>

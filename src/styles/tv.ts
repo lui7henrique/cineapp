@@ -26,7 +26,6 @@ export const Content = styled.div`
         width: 300px;
         filter: brightness(0.5);
         transition: all 0.2s ease-in;
-        z-index: -99;
 
         &:hover {
           filter: brightness(1);
@@ -34,13 +33,6 @@ export const Content = styled.div`
 
         @media (max-width: 800px) {
           width: 100%;
-        }
-      }
-      .logos {
-        z-index: 999999;
-        margin-bottom: -50px;
-        img {
-          max-width: 50px;
         }
       }
     }

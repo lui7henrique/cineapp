@@ -12,12 +12,15 @@ interface IBannerProps {
   title: string;
   vote_average: number;
   vote_count: number;
+  id: number;
   budget?: number;
   revenue?: number;
   videos?: VideosType;
   seasons?: number;
   episodes?: number;
   tagline?: string;
+  poster_path: string;
+  type: string;
 }
 
 export function Banner({
@@ -31,6 +34,9 @@ export function Banner({
   seasons,
   episodes,
   tagline,
+  id,
+  poster_path,
+  type,
 }: IBannerProps) {
   const { showPlayer, hidePlayer, openPlayer } = usePlayer();
   const note = FormatNote(vote_average);
@@ -40,7 +46,6 @@ export function Banner({
     noteArray.push(i);
   }
 
-  console.log(budget);
   return (
     <Highlight backdrop_path={backdrop_path}>
       {showPlayer && (
@@ -89,7 +94,10 @@ export function Banner({
               Trailer
             </button>
           )}
-          <button className="watchlist">
+          <button
+            className="watchlist"
+            onClick={() => console.log({ id, poster_path, title, type })}
+          >
             <MdAdd size={25} />
           </button>
         </div>

@@ -51,7 +51,7 @@ export const Content = styled.main`
           text-overflow: ellipsis;
           margin-top: -30px;
           padding: 3px 0.5rem;
-          z-index: 99;
+          z-index: 2;
           font-weight: bold;
           opacity: 0;
           visibility: hidden;

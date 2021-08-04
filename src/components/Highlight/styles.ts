@@ -54,7 +54,7 @@ export const Content = styled.div`
       padding: 0 1rem;
       margin-top: -100px;
       margin-bottom: 20px;
-      z-index: 99;
+      z-index: 2;
       visibility: hidden;
       opacity: 0;
       transition: visibility 0.2s, opacity 0.2s linear;

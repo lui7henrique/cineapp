@@ -38,6 +38,9 @@ export default function TV({
         seasons={details.number_of_seasons}
         episodes={details.number_of_episodes}
         tagline={details.tagline}
+        id={details.id}
+        poster_path={details.poster_path}
+        type="tv"
       />
       <Content>
         <main>

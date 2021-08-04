@@ -49,7 +49,7 @@ export const Cardlist = styled.div<CardListProps>`
       align-items: center;
       justify-content: center;
       background: rgba(0, 0, 0, 0.5);
-      z-index: 99;
+      z-index: 2;
       cursor: pointer;
       opacity: 0;
       transition: opacity 0.2s ease-in;
@@ -87,7 +87,7 @@ export const Cardlist = styled.div<CardListProps>`
         align-items: center;
         justify-content: space-between;
         margin-top: -30px;
-        z-index: 99;
+        z-index: 2;
         padding: 0 1rem;
         visibility: hidden;
         opacity: 0;
