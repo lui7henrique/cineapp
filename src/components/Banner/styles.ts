@@ -22,7 +22,7 @@ export const Highlight = styled.div<HighlightType>`
   }
 
   .tagline {
-    margin-top: -0.5rem;
+    margin-top: -0.2rem;
   }
 
   .infos {

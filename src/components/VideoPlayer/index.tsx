@@ -12,7 +12,7 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
 
   return (
     <Container onClick={hidePlayer}>
-      <ReactPlayer controls url={url} />
+      <ReactPlayer controls url={url} playing />
     </Container>
   );
 }
