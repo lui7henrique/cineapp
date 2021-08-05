@@ -31,7 +31,6 @@ export default function TV({
   providers,
 }: ITVProps) {
   const provider = providers.results.BR;
-  console.log(providers.results.BR);
 
   return (
     <Container>

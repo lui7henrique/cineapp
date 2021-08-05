@@ -126,7 +126,7 @@ export default function Tv({
       <title>Cineapp | TV</title>
       <Content>
         <div className="title">
-          <h1>Filmes</h1>
+          <h1>TV</h1>
           <Select
             options={options}
             placeholder="Genêros"
@@ -137,7 +137,7 @@ export default function Tv({
         {target.value === "all" ? (
           <>
             <CardList list={popular} title="🔥 Em alta" type="tv" />
-            <CardList list={topRated} title="👌 Melhores avaliados" type="tv" />
+            <CardList list={topRated} title="👌 Bem avaliadas" type="tv" />
             <CardList list={current} title="📅 Atuais" type="tv" />
             <CardList
               list={actionAdventure}

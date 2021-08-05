@@ -21,7 +21,6 @@ export function CardList({ title, list, type }: ICardListProps) {
   const [showRightArrow, setShowRightArrow] = useState(true);
 
   const filteredList = list.filter((item) => item.backdrop_path !== null);
-  console.log(filteredList);
 
   function handleLeftArrowClick() {
     let x = axisX + Math.round(window.innerWidth / 2);

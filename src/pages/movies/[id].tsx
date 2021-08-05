@@ -34,8 +34,6 @@ export default function Movie({
   const note = FormatNote(details.vote_average);
   const noteArray = [];
 
-  console.log(recommendations);
-
   const provider = providers.results.BR;
   for (var i = 0; i < note; i++) {
     noteArray.push(i);
