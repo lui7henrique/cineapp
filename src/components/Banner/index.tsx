@@ -1,11 +1,32 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { MdAdd, MdAttachMoney, MdMoneyOff, MdPlayArrow } from "react-icons/md";
+import {
+  MdAdd,
+  MdAttachMoney,
+  MdDelete,
+  MdMoneyOff,
+  MdPlayArrow,
+  MdRemoveCircle,
+} from "react-icons/md";
+import { useAuth } from "../../hooks/useAuth";
 import { usePlayer } from "../../hooks/usePlayer";
+import { useWatchlist } from "../../hooks/useWatchlist";
+import { database } from "../../services/firebase";
 import { VideosType } from "../../types/videos";
+import { Watchlist } from "../../types/watchlist/watchlist";
 import { FormatNote } from "../../utils/FormatNote";
 import { FormatValue } from "../../utils/FormatValue";
 import { VideoPlayer } from "../VideoPlayer";
 import { Highlight } from "./styles";
+
+type WatchListItem = {
+  id: number;
+  poster_path: string;
+  title: string;
+  type: string;
+};
 
 interface IBannerProps {
   backdrop_path: string;
@@ -39,11 +60,44 @@ export function Banner({
   type,
 }: IBannerProps) {
   const { showPlayer, hidePlayer, openPlayer } = usePlayer();
+  const { user, signInWithGoogle } = useAuth();
+  const watchlist = useWatchlist();
+
+  const hasItem = watchlist?.some((item) => item.item_id === id);
+  console.log(hasItem);
+
   const note = FormatNote(vote_average);
   const noteArray = [];
 
   for (var i = 0; i < note; i++) {
     noteArray.push(i);
+  }
+
+  async function handleAddToWatchlist({
+    id,
+    poster_path,
+    title,
+    type,
+  }: WatchListItem) {
+    if (!user) {
+      await signInWithGoogle();
+    }
+
+    const movie = {
+      id,
+      poster_path,
+      backdrop_path,
+      title,
+      type,
+      isWatched: false,
+    };
+
+    await database.ref(`watchlists/${user?.id}/watchlist`).push(movie);
+  }
+
+  async function handleDeleteToWatchlist(id: number) {
+    const item = watchlist?.filter((item) => item.item_id === id)[0];
+    await database.ref(`watchlists/${user?.id}/watchlist/${item?.id}`).remove();
   }
 
   return (
@@ -94,12 +148,25 @@ export function Banner({
               Trailer
             </button>
           )}
-          <button
-            className="watchlist"
-            onClick={() => console.log({ id, poster_path, title, type })}
-          >
-            <MdAdd size={25} />
-          </button>
+          {!hasItem ? (
+            <button
+              className="watchlist"
+              onClick={() =>
+                handleAddToWatchlist({ id, poster_path, title, type })
+              }
+            >
+              <MdAdd size={30} />
+              <p>Adicionar à watchlist</p>
+            </button>
+          ) : (
+            <button
+              className="watchlist delete"
+              onClick={() => handleDeleteToWatchlist(id)}
+            >
+              <MdDelete size={30} />
+              <p>Remover da Watchlist</p>
+            </button>
+          )}
         </div>
       </div>
     </Highlight>

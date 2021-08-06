@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { auth, firebase } from "../services/firebase";
+import { auth, database, firebase } from "../services/firebase";
 
 type User = {
   id: string;
@@ -57,6 +57,14 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         id: uid,
         name: displayName,
         avatar: photoURL,
+      });
+
+      const watchlistRef = database.ref("watchlists");
+
+      const firebaseWatchlist = await watchlistRef.push({
+        id: uid,
+        name: displayName,
+        list: [],
       });
     }
   }

@@ -86,12 +86,37 @@ export const Highlight = styled.div<HighlightType>`
     }
 
     &.watchlist {
+      display: flex;
+      align-items: center;
+      gap: 5px;
       background: none;
-      border: 3px solid var(--title);
       color: var(--title);
-      border-radius: 50%;
-      cursor: not-allowed;
+      cursor: pointer;
       padding: 0.2rem;
+
+      &.delete {
+        svg {
+          border: 0;
+        }
+      }
+
+      &:hover {
+        p {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      svg {
+        border: 3px solid var(--title);
+        border-radius: 50%;
+      }
+
+      p {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.2s ease-in-out;
+      }
     }
   }
 
