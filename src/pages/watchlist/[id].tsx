@@ -47,7 +47,7 @@ export default function WatchlistComponent() {
                     onClick={() => handleDeleteToWatchlist(item.item_id)}
                   />
                 </div>
-                <Link href={`${FormatType(item.type)}/${item.item_id}`}>
+                <Link href={`/${FormatType(item.type)}/${item.item_id}`}>
                   <a>
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
