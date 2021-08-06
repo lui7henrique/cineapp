@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
+export const Header = styled.div`
   display: flex;
   position: fixed;
   top: 0;
@@ -15,48 +15,14 @@ export const Header = styled.header`
   .hamburger {
     background: none;
     border: none;
+    display: block;
 
     svg {
       color: var(--title);
     }
 
-    @media (min-width: 500px) {
+    @media (min-width: 800px) {
       display: none;
-    }
-  }
-
-  .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: var(--shape);
-
-    width: 100vh;
-    height: 110vh;
-
-    @media (min-width: 500px) {
-      display: none;
-    }
-
-    button {
-      position: fixed;
-      right: 0;
-      padding: 1rem;
-    }
-
-    nav {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100%;
-      margin: 35% 16%;
-      a {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        font-size: 2rem;
-        margin-top: 1rem;
-      }
     }
   }
 
@@ -65,7 +31,7 @@ export const Header = styled.header`
     align-items: center;
     gap: 2rem;
 
-    @media (max-width: 500px) {
+    @media (max-width: 800px) {
       display: none;
     }
 
@@ -119,20 +85,9 @@ export const Header = styled.header`
       width: 40px;
       border-radius: 5px;
     }
-    .progress {
-      width: 100%;
-      height: 6px;
-      background: #e1e4e8;
-      border-radius: 10px;
-      margin-top: 0.5rem;
-      .progress-bar {
-        display: block;
-        height: 100%;
-        width: 90%;
-        background: var(--gradient);
-        background-size: 300% 100%;
-        animation: progress-animation 2s linear infinite;
-      }
+
+    @media (max-width: 800px) {
+      display: none;
     }
   }
 
@@ -149,6 +104,9 @@ export const Header = styled.header`
     transition: all 0.2s ease-in;
     &:hover {
       filter: brightness(0.8);
+    }
+    @media (max-width: 800px) {
+      display: none;
     }
   }
 

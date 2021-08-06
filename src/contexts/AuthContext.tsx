@@ -58,14 +58,6 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         name: displayName,
         avatar: photoURL,
       });
-
-      const watchlistRef = database.ref("watchlists");
-
-      const firebaseWatchlist = await watchlistRef.push({
-        id: uid,
-        name: displayName,
-        list: [],
-      });
     }
   }
 

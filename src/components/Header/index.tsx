@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { Header as HeaderStyles } from "./styles";
 import {
-  MdClose,
   MdHome,
   MdList,
   MdLocalMovies,
@@ -14,6 +13,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter as nextRouter } from "next/router";
+import { Sidebar } from "../Sidebar";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,40 +41,7 @@ export function Header() {
         <MdMenu size={40} />
       </button>
 
-      {isOpen && (
-        <div className="menu">
-          <button onClick={() => setIsOpen(false)}>
-            <MdClose size={40} />
-          </button>
-
-          <nav>
-            <Link href="/s">
-              <a href="">
-                <MdHome />
-                <p>Home</p>
-              </a>
-            </Link>
-            <Link href="/movies">
-              <a href="">
-                <MdLocalMovies />
-                <p>Filmes</p>
-              </a>
-            </Link>
-            <Link href="/tv">
-              <a href="">
-                <MdTv />
-                <p>TV</p>
-              </a>
-            </Link>
-            <Link href="/watchlist">
-              <a href="">
-                <MdList />
-                <p>Watchlist</p>
-              </a>
-            </Link>
-          </nav>
-        </div>
-      )}
+      {isOpen && <Sidebar setIsOpen={setIsOpen} isOpen={isOpen} />}
       <div className="nav">
         <nav>
           <Link href="/">
@@ -122,9 +89,6 @@ export function Header() {
         <div className="profile">
           <div>
             <p>{user.name}</p>
-            {/* <div className="progress">
-              <span className="progress-bar"></span>
-            </div> */}
           </div>
           <img src={user.avatar} alt={user.name} />
         </div>

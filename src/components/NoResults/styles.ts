@@ -17,7 +17,7 @@ export const Container = styled.div`
       background-image: url("https://i.ibb.co/XbtHCsC/bluegalaxy.jpg");
       background-size: cover;
       background-repeat: repeat;
-      background-clip: text;
+      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
