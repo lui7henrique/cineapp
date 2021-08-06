@@ -77,8 +77,8 @@ export function Sidebar({ setIsOpen, isOpen }: ISidebarProps) {
               <p>TV</p>
             </a>
           </Link>
-          <Link href="/watchlist">
-            <a className={asPath === "/watchlist" ? "active" : ""}>
+          <Link href={`/watchlist/${user?.id}`}>
+            <a className={asPath === `/watchlist/${user?.id}` ? "active" : ""}>
               <MdList size={20} />
               <p>Watchlist</p>
             </a>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.div`
+export const Header = styled.header`
   display: flex;
   position: fixed;
   top: 0;
@@ -9,7 +9,7 @@ export const Header = styled.div`
   justify-content: space-between;
   padding: 1rem 2rem;
   background: var(--shape);
-  z-index: 2;
+  z-index: 5;
   height: 5rem;
 
   .hamburger {
