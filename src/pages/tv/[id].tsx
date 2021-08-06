@@ -117,11 +117,11 @@ export default function TV({
                             href={providers.results.BR.link}
                             target="_blank"
                             rel="noreferrer"
+                            key={item.provider_id}
                           >
                             <img
                               src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
                               alt=""
-                              key={item.provider_id}
                             />
                           </a>
                         );
