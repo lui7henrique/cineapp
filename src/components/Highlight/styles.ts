@@ -36,6 +36,12 @@ export const Content = styled.div`
         visibility: visible;
         opacity: 1;
       }
+      img {
+        filter: brightness(0.5);
+        box-shadow: rgba(0, 0, 0, 0.8) 0px 12px 28px 0px,
+          rgba(0, 0, 0, 0.8) 0px 2px 4px 0px,
+          rgba(255, 255, 255, 0.01) 0px 0px 0px 1px inset;
+      }
     }
     img {
       border-radius: 5px;
@@ -45,13 +51,6 @@ export const Content = styled.div`
       box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
         rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
         rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-
-      &:hover {
-        filter: brightness(0.5);
-        box-shadow: rgba(0, 0, 0, 0.8) 0px 12px 28px 0px,
-          rgba(0, 0, 0, 0.8) 0px 2px 4px 0px,
-          rgba(255, 255, 255, 0.01) 0px 0px 0px 1px inset;
-      }
     }
 
     .infos {

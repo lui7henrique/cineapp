@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { MdCheck, MdDelete } from "react-icons/md";
+import { NoResults } from "../../components/NoResults";
 import { useAuth } from "../../hooks/useAuth";
 import { useWatchlist } from "../../hooks/useWatchlist";
 import { database } from "../../services/firebase";
