@@ -2,6 +2,7 @@
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
 import { NoResults } from "../../components/NoResults";
 import { api } from "../../services/api";
 import { Container, Content } from "../../styles/search";
@@ -136,6 +137,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     params: {
       api_key: process.env.IMBD_KEY,
       query: searchQuery,
+      language: "pt-BR",
     },
   });
 

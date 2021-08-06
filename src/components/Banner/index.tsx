@@ -10,6 +10,7 @@ import {
   MdPlayArrow,
   MdRemoveCircle,
 } from "react-icons/md";
+
 import { useAuth } from "../../hooks/useAuth";
 import { usePlayer } from "../../hooks/usePlayer";
 import { useWatchlist } from "../../hooks/useWatchlist";

@@ -3,6 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
+
 import { Container } from "./styles";
 
 interface ISimilarProps {

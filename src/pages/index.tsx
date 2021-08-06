@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetStaticProps } from "next";
+
 import { CardList } from "../components/CardList";
+import { Highlight } from "../components/Highlight";
+import { Container, Content } from "../styles/home";
 import { MovieType } from "../types/movie";
 import { TvType } from "../types/tv";
-import { Container, Content } from "../styles/home";
-import { Highlight } from "../components/Highlight";
 
 export default function Home({
   popular,

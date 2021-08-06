@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+
 import { MovieType } from "../../types/movie";
 import { TvType } from "../../types/tv";
-import { Cardlist, ListControllerLeft, ListControllerRight } from "./styles";
-import { useEffect, useState } from "react";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { FormatNote } from "../../utils/FormatNote";
-import Link from "next/link";
+import { Cardlist, ListControllerLeft, ListControllerRight } from "./styles";
 
 interface ICardListProps {
   title: string;

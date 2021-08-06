@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player";
-import { usePlayer } from "../../hooks/usePlayer";
 
+import { usePlayer } from "../../hooks/usePlayer";
 import { Container } from "./styles";
 
 interface VideoPlayerProps {

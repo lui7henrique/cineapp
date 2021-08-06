@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import { FaStar } from "react-icons/fa";
+
 import { MovieType } from "../../types/movie";
 import { TvType } from "../../types/tv";
-import { Content, Container } from "./styles";
-import { FaStar } from "react-icons/fa";
 import { FormatNote } from "../../utils/FormatNote";
-import Link from "next/link";
+import { Content, Container } from "./styles";
 
 type HighlightType = {
   movie: MovieType;

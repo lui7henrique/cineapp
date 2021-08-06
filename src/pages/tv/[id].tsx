@@ -1,17 +1,17 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable @next/next/no-img-element */
-import { GetServerSideProps } from "next";
-import { Banner } from "../../components/Banner";
-import { Container, Content } from "../../styles/tv";
-import { Recommendations } from "../../components/Recommendations";
-import { DetailsTV } from "../../types/tv/details";
-import { VideosType } from "../../types/videos";
-import { Similar } from "../../components/Similar";
-import Link from "next/link";
 import { parseISO, format } from "date-fns";
 import brazilLocale from "date-fns/locale/pt";
-import { api } from "../../services/api";
+import { GetServerSideProps } from "next";
+import Link from "next/link";
+
+import { Banner } from "../../components/Banner";
+import { Recommendations } from "../../components/Recommendations";
+import { Similar } from "../../components/Similar";
+import { Container, Content } from "../../styles/tv";
 import { ProviderType } from "../../types/providers";
+import { DetailsTV } from "../../types/tv/details";
+import { VideosType } from "../../types/videos";
 
 interface ITVProps {
   details: DetailsTV;

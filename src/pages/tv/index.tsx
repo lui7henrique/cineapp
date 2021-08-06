@@ -1,10 +1,11 @@
 import { GetServerSideProps } from "next";
 import { useState } from "react";
+import Select from "react-select";
+
 import { CardList } from "../../components/CardList";
+import { Cardlist } from "../../components/CardList/styles";
 import { api } from "../../services/api";
 import { Container, Content } from "../../styles/tvs";
-import Select from "react-select";
-import { Cardlist } from "../../components/CardList/styles";
 
 type SimpleTv = {
   id: number;

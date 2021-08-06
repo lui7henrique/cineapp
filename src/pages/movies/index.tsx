@@ -1,9 +1,10 @@
 import { GetStaticProps } from "next";
+import { useState } from "react";
+import Select from "react-select";
+
 import { CardList } from "../../components/CardList";
 import { api } from "../../services/api";
 import { Container, Content } from "../../styles/movies";
-import Select from "react-select";
-import { useState } from "react";
 
 type SimpleMovie = {
   id: number;

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useRouter as nextRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import {
   MdClose,
@@ -10,9 +11,9 @@ import {
   MdSearch,
   MdTv,
 } from "react-icons/md";
+
 import { useAuth } from "../../hooks/useAuth";
 import { Sidebar as SidebarStyles } from "./styles";
-import { useRouter as nextRouter } from "next/router";
 
 interface ISidebarProps {
   setIsOpen: (arg0: boolean) => void;

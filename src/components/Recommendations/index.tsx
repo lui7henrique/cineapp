@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
+
 import { Container } from "./styles";
 
 interface IRecommendationsProps {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { database } from "../services/firebase";
 import { UnformattedWatchlist, Watchlist } from "../types/watchlist/watchlist";
 import { useAuth } from "./useAuth";

@@ -1,6 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+
+import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import { Header as HeaderStyles } from "./styles";
+import { useRouter as nextRouter } from "next/router";
+import { FormEvent, useEffect, useState } from "react";
 import {
   MdHome,
   MdList,
@@ -9,11 +12,10 @@ import {
   MdSearch,
   MdTv,
 } from "react-icons/md";
-import { FormEvent, useEffect, useState } from "react";
-import { useRouter } from "next/dist/client/router";
+
 import { useAuth } from "../../hooks/useAuth";
-import { useRouter as nextRouter } from "next/router";
 import { Sidebar } from "../Sidebar";
+import { Header as HeaderStyles } from "./styles";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);

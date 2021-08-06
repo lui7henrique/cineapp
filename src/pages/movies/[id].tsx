@@ -1,18 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import { GetServerSideProps } from "next";
-import { DetailsType } from "../../types/details";
-import { VideosType } from "../../types/videos";
-import { CreditsType } from "../../types/credits";
-import { Container, Content } from "../../styles/movie";
-import { FormatRuntime } from "../../utils/FormatRuntime";
-import { ProviderType } from "../../types/providers";
-import Link from "next/link";
-import { FormatNote } from "../../utils/FormatNote";
+
 import { parseISO, format } from "date-fns";
 import brazilLocale from "date-fns/locale/pt";
+import { GetServerSideProps } from "next";
+import Link from "next/link";
+
 import { Banner } from "../../components/Banner";
 import { Recommendations } from "../../components/Recommendations";
 import { Similar } from "../../components/Similar";
+import { Container, Content } from "../../styles/movie";
+import { CreditsType } from "../../types/credits";
+import { DetailsType } from "../../types/details";
+import { ProviderType } from "../../types/providers";
+import { VideosType } from "../../types/videos";
+import { FormatNote } from "../../utils/FormatNote";
+import { FormatRuntime } from "../../utils/FormatRuntime";
 
 type PropsType = {
   details: DetailsType;

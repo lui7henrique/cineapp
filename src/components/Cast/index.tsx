@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+
 import { Cast as CastType } from "../../types/credits";
 import {
   Container,
