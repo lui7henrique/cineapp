@@ -84,7 +84,7 @@ export function Header() {
       </div>
       {!user ? (
         <button className="login" onClick={() => signInWithGoogle()}>
-          <img src="google-icon.svg" alt="Google" />
+          <img src="/google-icon.svg" alt="Google" />
           Login com o Google
         </button>
       ) : (

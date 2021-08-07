@@ -30,6 +30,8 @@ export default function Search({ movies, tv, people }: ISearchProps) {
   const noResults =
     movies?.length === 0 && tv?.length === 0 && people?.length === 0;
 
+  console.log(people);
+
   return (
     <>
       <title>{search}</title>
@@ -98,7 +100,7 @@ export default function Search({ movies, tv, people }: ISearchProps) {
                   <div>
                     {people?.map((personal) => {
                       return (
-                        <Link href={`/people/${personal.id}`} key={personal.id}>
+                        <Link href={`/person/${personal.id}`} key={personal.id}>
                           <a>
                             <div>
                               {personal.profile ? (

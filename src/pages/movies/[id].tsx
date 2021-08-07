@@ -118,7 +118,7 @@ export default function Movie({
                     {credits.cast.slice(0, 10).map((participant, index) => {
                       return (
                         <Link
-                          href={`/name/${participant.id}`}
+                          href={`/person/${participant.id}`}
                           key={participant.id}
                         >
                           <a>

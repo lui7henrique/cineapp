@@ -70,7 +70,7 @@ export default function TV({
                 <strong>Criador por: </strong>
                 {details.created_by.map((author, index) => {
                   return (
-                    <Link href={`/name/${author.id}`} key={author.id}>
+                    <Link href={`/person/${author.id}`} key={author.id}>
                       <a>
                         {index === details.created_by.length - 1
                           ? author.name + "."

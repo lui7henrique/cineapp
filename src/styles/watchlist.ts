@@ -15,7 +15,7 @@ export const Content = styled.main`
   section {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    padding-right: 1rem;
+    padding-right: 2rem;
     gap: 1rem;
 
     @media (max-width: 1000px) {
