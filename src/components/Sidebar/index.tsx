@@ -89,7 +89,7 @@ export function Sidebar({ setIsOpen, isOpen }: ISidebarProps) {
         {!user && (
           <button className="google-login" onClick={() => signInWithGoogle()}>
             <Image src={googleIcon} alt="Google" />
-            Login com o Google para ter uma watchlist 🤗!
+            Login com o Google
           </button>
         )}
       </div>
