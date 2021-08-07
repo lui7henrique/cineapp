@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRouter as nextRouter } from "next/router";
@@ -12,6 +13,7 @@ import {
   MdTv,
 } from "react-icons/md";
 
+import googleIcon from "../../assets/google-icon.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { Sidebar as SidebarStyles } from "./styles";
 
@@ -86,7 +88,7 @@ export function Sidebar({ setIsOpen, isOpen }: ISidebarProps) {
         </nav>
         {!user && (
           <button className="google-login" onClick={() => signInWithGoogle()}>
-            <img src="/google-icon.svg" alt="Google" />
+            <Image src={googleIcon} alt="Google" />
             Login com o Google para ter uma watchlist 🤗!
           </button>
         )}

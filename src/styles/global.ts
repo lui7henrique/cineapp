@@ -50,22 +50,22 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body::-webkit-scrollbar {
-  width: 5px; /* width of the entire scrollbar */
-}
+    width: 5px; /* width of the entire scrollbar */
+  }
 
-body::-webkit-scrollbar-track {
-  background: var(--shape); /* color of the tracking area */
-}
+  body::-webkit-scrollbar-track {
+    background: var(--shape); /* color of the tracking area */
+  }
 
-body::-webkit-scrollbar-thumb {
-  background-color: var(--primary); /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
-  border: 3px solid var(--primary); /* creates padding around scroll thumb */
-}
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--primary); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid var(--primary); /* creates padding around scroll thumb */
+  }
 
-.loader {
-  position: fixed;
-  top: 47%;
-  left: 47%;
-}
+  .loader {
+    position: fixed;
+    top: 47%;
+    left: 47%;
+  }
 `;

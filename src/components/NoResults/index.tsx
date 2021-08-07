@@ -23,14 +23,7 @@ export function NoResults({ search }: INoResultsProps) {
         <span>
           Não encontramos resultados para <strong>{`"${search}"`}</strong>.
         </span>
-        {/* <ul>
-          <li>Experimente buscar por filme, série, ator ou diretor.</li>
-          <li>
-            Ou voltar para <a href="/">página inicial</a>
-          </li>
-        </ul> */}
       </div>
-      {/* <img src="https://i.ibb.co/h7W9scm/estalo.png" alt="" /> */}
     </Container>
   );
 }

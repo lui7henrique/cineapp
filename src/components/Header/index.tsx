@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useRouter } from "next/dist/client/router";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter as nextRouter } from "next/router";
 import { FormEvent, useEffect, useState } from "react";
@@ -13,6 +14,7 @@ import {
   MdTv,
 } from "react-icons/md";
 
+import googleIcon from "../../assets/google-icon.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { Sidebar } from "../Sidebar";
 import { Header as HeaderStyles } from "./styles";
@@ -84,7 +86,7 @@ export function Header() {
       </div>
       {!user ? (
         <button className="login" onClick={() => signInWithGoogle()}>
-          <img src="/google-icon.svg" alt="Google" />
+          <Image src={googleIcon} alt="Google" />
           Login com o Google
         </button>
       ) : (
