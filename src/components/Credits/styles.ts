@@ -54,6 +54,7 @@ export const Content = styled.section`
         box-shadow: rgba(0, 0, 0, 0.8) 0px 12px 28px 0px,
           rgba(0, 0, 0, 0.8) 0px 2px 4px 0px,
           rgba(255, 255, 255, 0.01) 0px 0px 0px 1px inset;
+        filter: brightness(0.4);
       }
     }
 

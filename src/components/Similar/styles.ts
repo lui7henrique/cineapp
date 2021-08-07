@@ -33,7 +33,7 @@ export const Container = styled.div`
         gap: 0rem;
         border-radius: 5px;
         cursor: pointer;
-        filter: brightness(0.7);
+        filter: brightness(0.5);
         transition: all 0.2s ease-in-out;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
           rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
