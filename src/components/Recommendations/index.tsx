@@ -39,12 +39,18 @@ export function Recommendations({
     updateRecommendations(8);
   }, [router]);
 
+  const filteredRecommendations = recommendations.results.filter(
+    (item) => item.backdrop_path !== null && item.overview !== ""
+  );
+
+  console.log(filteredRecommendations.length, recommendations.results.length);
+
   return (
     <Container>
       <div className="recommendations">
         <h2>Recomendados</h2>
         <div>
-          {recommendations.results
+          {filteredRecommendations
             .slice(0, showRecommendations)
             .map((recommendation) => {
               return (
@@ -54,24 +60,13 @@ export function Recommendations({
                 >
                   <a>
                     <div className="recommendation">
-                      {recommendation.backdrop_path ? (
-                        <img
-                          src={`https://image.tmdb.org/t/p/w500/${recommendation.backdrop_path}`}
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          src="https://i.ibb.co/2dkrb1N/Screenshot-6.jpg"
-                          alt=""
-                        />
-                      )}
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500/${recommendation.backdrop_path}`}
+                        alt=""
+                      />
 
                       <div>
-                        <h1>
-                          {recommendation.title
-                            ? recommendation.title
-                            : recommendation.name}
-                        </h1>
+                        <h1>{recommendation.title ?? recommendation.name}</h1>
                         <p>{recommendation.overview}</p>
                       </div>
                     </div>
@@ -82,14 +77,14 @@ export function Recommendations({
         </div>
       </div>
       <div className="expand">
-        {showRecommendations === recommendations.results.length ? (
+        {showRecommendations === filteredRecommendations.length ? (
           <MdExpandLess size={40} onClick={() => updateRecommendations(8)} />
         ) : (
           <MdExpandMore
             size={40}
             onClick={() =>
               updateRecommendations(
-                showRecommendations + recommendations.results.length - 8
+                showRecommendations + filteredRecommendations.length - 8
               )
             }
           />

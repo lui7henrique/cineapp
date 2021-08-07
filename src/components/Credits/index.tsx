@@ -24,9 +24,11 @@ export function Credits({ title, list, type }: ICreditsProps) {
 
   return (
     <Container>
-      <h1>
-        {title} {title === "Filmes" ? "atuados" : "atuadas"}
-      </h1>
+      {filteredCast.length > 1 && (
+        <h1>
+          {title} {title === "Filmes" ? "atuados" : "atuadas"}
+        </h1>
+      )}
       <Content>
         {filteredCast.length > 1 &&
           filteredCast.slice(0, targetsCast).map((item) => {
@@ -55,22 +57,24 @@ export function Credits({ title, list, type }: ICreditsProps) {
             );
           })}
       </Content>
-      <div className="expand">
-        {targetsCast === filteredCast.length ? (
-          <MdExpandMore
-            size={40}
-            onClick={() => updateTargetsCast(8)}
-            className="less"
-          />
-        ) : (
-          <MdExpandMore
-            size={40}
-            onClick={() =>
-              updateTargetsCast(targetsCast + filteredCast.length - 8)
-            }
-          />
-        )}
-      </div>
+      {filteredCast.length > 1 && !(filteredCast.length < 8) && (
+        <div className="expand">
+          {targetsCast === filteredCast.length ? (
+            <MdExpandMore
+              size={40}
+              onClick={() => updateTargetsCast(8)}
+              className="less"
+            />
+          ) : (
+            <MdExpandMore
+              size={40}
+              onClick={() =>
+                updateTargetsCast(targetsCast + filteredCast.length - 8)
+              }
+            />
+          )}
+        </div>
+      )}
       {filteredCrew.length > 1 && (
         <h1>
           {title} {title === "Filmes" ? "dirigidos" : "dirigidas"}

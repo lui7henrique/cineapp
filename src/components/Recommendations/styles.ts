@@ -60,6 +60,7 @@ export const Container = styled.div`
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+            max-width: 240px;
           }
 
           p {
@@ -68,6 +69,7 @@ export const Container = styled.div`
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+            max-width: 240px;
           }
         }
 

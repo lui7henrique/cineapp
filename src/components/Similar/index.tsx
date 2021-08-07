@@ -35,48 +35,43 @@ export function Similar({ type, similar }: ISimilarProps) {
     updateSimilar(8);
   }, [router]);
 
+  const filteredSimilar = similar.results.filter(
+    (item) => item.backdrop_path !== null && item.overview !== ""
+  );
+
   return (
     <Container>
       <div className="similar">
         <h2>Semelhantes</h2>
         <div>
-          {similar.results.slice(0, showSimilar).map((item) => {
+          {filteredSimilar.slice(0, showSimilar).map((item) => {
             return (
-              item.overview && (
-                <Link href={`/${type}/${item.id}`} key={item.id}>
-                  <a>
-                    <div className="similar-item">
-                      {item.backdrop_path ? (
-                        <img
-                          src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          src="https://i.ibb.co/2dkrb1N/Screenshot-6.jpg"
-                          alt=""
-                        />
-                      )}
-                      <div>
-                        <h1>{item.title ? item.title : item.name}</h1>
-                        <p>{item.overview}</p>
-                      </div>
+              <Link href={`/${type}/${item.id}`} key={item.id}>
+                <a>
+                  <div className="similar-item">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                      alt=""
+                    />
+                    <div>
+                      <h1>{item.title ? item.title : item.name}</h1>
+                      <p>{item.overview}</p>
                     </div>
-                  </a>
-                </Link>
-              )
+                  </div>
+                </a>
+              </Link>
             );
           })}
         </div>
       </div>
       <div className="expand">
-        {showSimilar === similar.results.length ? (
+        {showSimilar === filteredSimilar.length ? (
           <MdExpandLess size={40} onClick={() => updateSimilar(8)} />
         ) : (
           <MdExpandMore
             size={40}
             onClick={() =>
-              updateSimilar(showSimilar + similar.results.length - 8)
+              updateSimilar(showSimilar + filteredSimilar.length - 8)
             }
           />
         )}

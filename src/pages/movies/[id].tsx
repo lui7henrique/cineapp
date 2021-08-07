@@ -74,11 +74,13 @@ export default function Movie({
                 className="poster"
               />
 
-              <a href={details.homepage} target="_blank" rel="noreferrer">
-                <button>
-                  <p>Página oficial</p>
-                </button>
-              </a>
+              {details.homepage && (
+                <a href={details.homepage} target="_blank" rel="noreferrer">
+                  <button>
+                    <p>Página oficial</p>
+                  </button>
+                </a>
+              )}
             </div>
 
             <main className="hero">
