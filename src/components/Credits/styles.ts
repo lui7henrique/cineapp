@@ -70,7 +70,7 @@ export const Content = styled.section`
     .infos {
       filter: brightness(1);
       padding: 0 1rem;
-      padding-bottom: 1rem;
+      padding-bottom: 0.5rem;
       margin-top: -55px;
       z-index: 2;
 
@@ -83,6 +83,10 @@ export const Content = styled.section`
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+
+        &.crew {
+          padding-bottom: 1.3rem;
+        }
       }
 
       .character {

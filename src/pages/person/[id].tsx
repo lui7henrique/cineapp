@@ -5,12 +5,12 @@ import { useRouter } from "next/dist/client/router";
 import { Credits } from "../../components/Credits";
 import { api } from "../../services/api";
 import { Container, Content } from "../../styles/person";
-import { Details, MovieCredits, TvCredits } from "../../types/person/details";
+import { Details, Credits as CreditsType } from "../../types/person/details";
 
 interface IPersonProps {
   details: Details;
-  movieCredits: MovieCredits;
-  tvCredits: TvCredits;
+  movieCredits: CreditsType;
+  tvCredits: CreditsType;
 }
 
 export default function Person({
