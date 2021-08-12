@@ -1,15 +1,13 @@
 import type { AppProps } from "next/app";
 import Router from "next/router";
+import NextNprogress from "nextjs-progressbar";
 import { useState } from "react";
-import ReactLoading from "react-loading";
 import "../services/firebase";
 
 import { Header } from "../components/Header";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import { PlayerProvider } from "../hooks/usePlayer";
 import { GlobalStyles } from "../styles/global";
-
-import NextNprogress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(false);

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Banner } from "../../components/Banner";
 import { Recommendations } from "../../components/Recommendations";
 import { Similar } from "../../components/Similar";
+import { api } from "../../services/api";
 import { Container, Content } from "../../styles/tv";
 import { ProviderType } from "../../types/providers";
 import { DetailsTV } from "../../types/tv/details";
@@ -169,29 +170,47 @@ export default function TV({
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.query;
 
-  const details = await fetch(
-    `http://api.themoviedb.org/3/tv/${id}?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
-  ).then((res) => res.json());
+  const { data: details } = await api.get(`/tv/${id}`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
 
-  const videos = await fetch(
-    `http://api.themoviedb.org/3/tv/${id}/videos?api_key=90f2b425e5ff1b801ed9dccf4bafadde`
-  ).then((res) => res.json());
+  const { data: videos } = await api.get(`tv/${id}/videos`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
 
-  const credits = await fetch(
-    `http://api.themoviedb.org/3/tv/${id}/credits?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
-  ).then((res) => res.json());
+  const { data: credits } = await api.get(`tv/${id}/credits`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
 
-  const providers = await fetch(
-    `http://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
-  ).then((res) => res.json());
+  const { data: providers } = await api.get(`tv/${id}/watch/providers`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
 
-  const recommendations = await fetch(
-    `http://api.themoviedb.org/3/tv/${id}/recommendations?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
-  ).then((res) => res.json());
+  const { data: recommendations } = await api.get(`tv/${id}/recommendations`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
 
-  const similar = await fetch(
-    `http://api.themoviedb.org/3/tv/${id}/similar?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR`
-  ).then((res) => res.json());
+  const { data: similar } = await api.get(`tv/${id}/similar`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
 
   return {
     props: {
