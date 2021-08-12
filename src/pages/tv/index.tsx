@@ -84,7 +84,6 @@ export default function Tv({
 
   const handleChange = (select: { value: string; label: string }) => {
     updateTarget(select);
-    console.log(`Option selected:`, target);
   };
 
   function SwitchTVGenre(value: string) {
@@ -179,7 +178,7 @@ export default function Tv({
 async function getTvByGenreId(genreId: number) {
   const response = await api.get("/discover/tv", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       with_genres: genreId,
       "release_date.lte": new Date(),
       sort_by: "popularity.desc",
@@ -205,7 +204,7 @@ async function getTvByGenreId(genreId: number) {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const popularResponse = await api.get("/tv/popular", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       language: "pt-BR",
     },
   });
@@ -223,7 +222,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const topRatedResponse = await api.get("/tv/top_rated", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       language: "pt-BR",
     },
   });
@@ -241,7 +240,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const currentResponse = await api.get("/tv/on_the_air", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       language: "pt-BR",
     },
   });

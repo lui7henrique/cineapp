@@ -29,8 +29,6 @@ export function Sidebar({ setIsOpen, isOpen }: ISidebarProps) {
   const { asPath } = useRouter();
   const router = nextRouter();
 
-  console.log(asPath);
-
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
 

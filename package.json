@@ -15,6 +15,7 @@
     "icons": "^1.0.0",
     "luxon": "^2.0.1",
     "next": "11.0.1",
+    "nextjs-progressbar": "^0.0.11",
     "react": "^17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
@@ -30,11 +31,11 @@
     "@types/react-select": "^4.0.17",
     "@types/styled-components": "^5.1.11",
     "@typescript-eslint/parser": "^4.29.0",
+    "babel-plugin-styled-components": "latest",
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",
     "eslint-plugin-import-helpers": "^1.1.0",
-    "typescript": "^4.3.5",
-    "babel-plugin-styled-components": "latest"
+    "typescript": "^4.3.5"
   },
   "babel": {
     "env": {

@@ -9,6 +9,8 @@ import { AuthContextProvider } from "../contexts/AuthContext";
 import { PlayerProvider } from "../hooks/usePlayer";
 import { GlobalStyles } from "../styles/global";
 
+import NextNprogress from "nextjs-progressbar";
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,17 +28,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AuthContextProvider>
           <GlobalStyles />
           <Header />
-          {isLoading ? (
-            <ReactLoading
-              type={"spin"}
-              color="var(--primary)"
-              height={150}
-              width={75}
-              className="loader"
-            />
-          ) : (
-            <Component {...pageProps} />
-          )}
+          <NextNprogress
+            color="rgba(0,53,157,1)"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={3}
+            showOnShallow={true}
+          />
+          <Component {...pageProps} />
         </AuthContextProvider>
       </PlayerProvider>
     </>

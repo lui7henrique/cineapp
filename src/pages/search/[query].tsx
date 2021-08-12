@@ -30,8 +30,6 @@ export default function Search({ movies, tv, people }: ISearchProps) {
   const noResults =
     movies?.length === 0 && tv?.length === 0 && people?.length === 0;
 
-  console.log(people);
-
   return (
     <>
       <title>{search}</title>
@@ -137,7 +135,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const response = await api.get("/search/multi", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       query: searchQuery,
       language: "pt-BR",
     },

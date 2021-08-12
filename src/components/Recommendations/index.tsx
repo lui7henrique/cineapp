@@ -43,8 +43,6 @@ export function Recommendations({
     (item) => item.backdrop_path !== null && item.overview !== ""
   );
 
-  console.log(filteredRecommendations.length, recommendations.results.length);
-
   return (
     <Container>
       <div className="recommendations">

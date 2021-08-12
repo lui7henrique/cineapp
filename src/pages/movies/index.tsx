@@ -84,7 +84,6 @@ export default function Movies({
 
   const handleChange = (select: { value: string; label: string }) => {
     updateTarget(select);
-    console.log(`Option selected:`, target);
   };
 
   function SwitchMovieGenre(value: string) {
@@ -175,7 +174,7 @@ export default function Movies({
 async function getMoviesByGenreId(genreId: number) {
   const response = await api.get("/discover/movie", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       with_genres: genreId,
       "release_date.lte": new Date(),
       sort_by: "popularity.desc",
@@ -201,7 +200,7 @@ async function getMoviesByGenreId(genreId: number) {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const trendingResponse = await api.get("/trending/movie/week", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       language: "pt-BR",
     },
   });
@@ -219,7 +218,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const nowPlayingResponse = await api.get("/movie/now_playing", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       language: "pt-BR",
     },
   });
@@ -237,7 +236,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const topRatedResponse = await api.get("/movie/top_rated", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       language: "pt-BR",
     },
   });
@@ -255,7 +254,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const upComingResponse = await api.get("/movie/upcoming", {
     params: {
-      api_key: process.env.IMBD_KEY,
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       language: "pt-BR",
     },
   });

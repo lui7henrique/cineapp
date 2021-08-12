@@ -3,21 +3,24 @@ import { GetStaticProps } from "next";
 
 import { CardList } from "../components/CardList";
 import { Highlight } from "../components/Highlight";
+import { api } from "../services/api";
 import { Container, Content } from "../styles/home";
 import { MovieType } from "../types/movie";
 import { TvType } from "../types/tv";
 
-export default function Home({
-  popular,
-  topRated,
-  popularTV,
-  topRatedTV,
-}: any) {
-  const popularMovies: MovieType[] = popular.results;
-  const topRatedMovies: MovieType[] = topRated.results;
-  const popularTv: TvType[] = popularTV.results;
-  const topRatedTv: TvType[] = topRatedTV.results;
+type HomeProps = {
+  popularMovies: MovieType[];
+  topRatedMovies: MovieType[];
+  popularTv: TvType[];
+  topRatedTv: TvType[];
+};
 
+export default function Home({
+  popularMovies,
+  topRatedMovies,
+  popularTv,
+  topRatedTv,
+}: HomeProps) {
   return (
     <Container>
       <title>Cineapp</title>
@@ -35,7 +38,7 @@ export default function Home({
         />
         <CardList
           title="📺 Séries populares"
-          list={popularTv.slice(1, popularMovies.length)}
+          list={popularTv.slice(1, popularTv.length)}
           type="tv"
         />
         <CardList title="✅ Séries bem avaliadas" list={topRatedTv} type="tv" />
@@ -45,28 +48,44 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const popular = await fetch(
-    "http://api.themoviedb.org/3/movie/popular?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR"
-  ).then((res) => res.json());
+  const popularMoviesResponse = await api.get("/movie/popular", {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
+  const popularMovies = popularMoviesResponse.data.results;
 
-  const topRated = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR"
-  ).then((res) => res.json());
+  const topRatedMoviesResponse = await api.get("/movie/top_rated", {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
+  const topRatedMovies = topRatedMoviesResponse.data.results;
 
-  const popularTV = await fetch(
-    "https://api.themoviedb.org/3/tv/popular?api_key=90f2b425e5ff1b801ed9dccf4bafadde&language=pt-BR"
-  ).then((res) => res.json());
+  const popularTvResponse = await api.get("/tv/popular", {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
+  const popularTv = popularTvResponse.data.results;
 
-  const topRatedTV = await fetch(
-    "https://api.themoviedb.org/3/tv/top_rated?api_key=90f2b425e5ff1b801ed9dccf4bafadde"
-  ).then((res) => res.json());
+  const topRatedTvResponse = await api.get("/tv/top_rated", {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
+      language: "pt-BR",
+    },
+  });
+  const topRatedTv = topRatedTvResponse.data.results;
 
   return {
     props: {
-      popular,
-      topRated,
-      popularTV,
-      topRatedTV,
+      popularMovies,
+      topRatedMovies,
+      popularTv,
+      topRatedTv,
     },
     revalidate: 60 * 60 * 24, //1 day
   };

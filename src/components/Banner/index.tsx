@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import {
   MdAdd,
@@ -8,7 +6,6 @@ import {
   MdDelete,
   MdMoneyOff,
   MdPlayArrow,
-  MdRemoveCircle,
 } from "react-icons/md";
 
 import { useAuth } from "../../hooks/useAuth";
@@ -16,7 +13,6 @@ import { usePlayer } from "../../hooks/usePlayer";
 import { useWatchlist } from "../../hooks/useWatchlist";
 import { database } from "../../services/firebase";
 import { VideosType } from "../../types/videos";
-import { Watchlist } from "../../types/watchlist/watchlist";
 import { FormatNote } from "../../utils/FormatNote";
 import { FormatValue } from "../../utils/FormatValue";
 import { VideoPlayer } from "../VideoPlayer";
@@ -65,7 +61,6 @@ export function Banner({
   const watchlist = useWatchlist();
 
   const hasItem = watchlist?.some((item) => item.item_id === id);
-  console.log(hasItem);
 
   const note = FormatNote(vote_average);
   const noteArray = [];
