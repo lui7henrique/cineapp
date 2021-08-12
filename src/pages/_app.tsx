@@ -29,10 +29,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           <GlobalStyles />
           <Header />
           <NextNprogress
-            color="rgba(0,53,157,1)"
+            color="linear-gradient(90deg, rgba(0,53,157,1) 5%, rgba(0,111,255,1) 50%, rgba(63,204,255,1) 100%)"
             startPosition={0.3}
             stopDelayMs={200}
-            height={3}
+            height={5}
             showOnShallow={true}
           />
           <Component {...pageProps} />
