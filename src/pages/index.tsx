@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 
 import { CardList } from "../components/CardList";
 import { Highlight } from "../components/Highlight";
@@ -24,6 +25,25 @@ export default function Home({
   return (
     <Container>
       <title>Cineapp</title>
+      <NextSeo
+        title="Cineapp"
+        description="Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤"
+        canonical="https://cineapp.vercel.app/"
+        openGraph={{
+          url: "https://cineapp.vercel.app/",
+          title: "Cineapp",
+          description:
+            "Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤",
+          images: [
+            {
+              url: "https://cineapp.vercel.app/img/cover.jpg",
+              width: 1280,
+              height: 720,
+              alt: "Cineapp",
+            },
+          ],
+        }}
+      />
       <Content>
         <Highlight movie={popularMovies[0]} tv={popularTv[0]} />
         <CardList

@@ -3,6 +3,7 @@
 import { parseISO, format } from "date-fns";
 import brazilLocale from "date-fns/locale/pt";
 import { GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
 import Link from "next/link";
 
 import { Banner } from "../../components/Banner";
@@ -50,6 +51,24 @@ export default function Movie({
   return (
     <>
       <title>{details.title}</title>
+      <NextSeo
+        title={details.title}
+        description={details.overview}
+        canonical={`https://cineapp.vercel.app/movies/${details.id}`}
+        openGraph={{
+          url: `https://cineapp.vercel.app/movies/${details.id}`,
+          title: details.title,
+          description: details.overview,
+          images: [
+            {
+              url: `https://image.tmdb.org/t/p/w500/${details.backdrop_path}`,
+              width: 1280,
+              height: 720,
+              alt: details.title,
+            },
+          ],
+        }}
+      />
 
       <Container>
         <Banner

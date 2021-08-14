@@ -1,30 +1,23 @@
+import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Router from "next/router";
 import NextNprogress from "nextjs-progressbar";
 import { useState } from "react";
 import "../services/firebase";
 
+import SEO from "../../next-seo.config";
 import { Header } from "../components/Header";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import { PlayerProvider } from "../hooks/usePlayer";
 import { GlobalStyles } from "../styles/global";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isLoading, setIsLoading] = useState(false);
-
-  Router.events.on("routeChangeStart", (url) => {
-    setIsLoading(true);
-  });
-
-  Router.events.on("routeChangeComplete", (url) => {
-    setIsLoading(false);
-  });
-
   return (
     <>
       <PlayerProvider>
         <AuthContextProvider>
           <GlobalStyles />
+          <DefaultSeo {...SEO} />
           <Header />
           <NextNprogress
             color="linear-gradient(90deg, rgba(0,53,157,1) 5%, rgba(0,111,255,1) 50%, rgba(63,204,255,1) 100%)"

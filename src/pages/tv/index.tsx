@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
 import { useState } from "react";
 import Select from "react-select";
 
@@ -124,6 +125,7 @@ export default function Tv({
   return (
     <Container>
       <title>Cineapp | TV</title>
+
       <Content>
         <div className="title">
           <h1>TV</h1>

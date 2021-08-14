@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 import { useState } from "react";
 import Select from "react-select";
 
@@ -124,6 +125,25 @@ export default function Movies({
   return (
     <Container>
       <title>Cineapp | Filmes</title>
+      <NextSeo
+        title="Cineapp | Filmes"
+        description="Saiba tudo sobre filmes, como nota, elenco, orçamento, bilheteria, semelhantes e recomendados! "
+        canonical="https://cineapp.vercel.app/movies"
+        openGraph={{
+          url: "https://cineapp.vercel.app/movies",
+          title: "Cineapp",
+          description:
+            "Saiba tudo sobre filmes, como nota, elenco, orçamento, bilheteria, semelhantes e recomendados! ",
+          images: [
+            {
+              url: "https://cineapp.vercel.app/img/movies.jpg",
+              width: 1280,
+              height: 720,
+              alt: "Cineapp",
+            },
+          ],
+        }}
+      />
       <Content>
         <div className="title">
           <h1>Filmes</h1>
