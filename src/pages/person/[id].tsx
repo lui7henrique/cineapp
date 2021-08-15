@@ -32,7 +32,7 @@ export default function Person({
           description: `${details.biography.slice(0, 100)}...`,
           images: [
             {
-              url: `https://image.tmdb.org/t/p/w500/${details.profile_path}`,
+              url: `https://image.tmdb.org/t/p/original/${details.profile_path}`,
               width: 450,
               height: 670,
               alt: details.name,

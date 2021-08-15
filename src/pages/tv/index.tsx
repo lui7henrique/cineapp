@@ -125,6 +125,25 @@ export default function Tv({
   return (
     <Container>
       <title>Cineapp | TV</title>
+      <NextSeo
+        title="Cineapp | TV"
+        description="Saiba tudo sobre séries de tv, como nota, diretores, orçamento, bilheteria, semelhantes, recomendadose temporadas!"
+        canonical="https://cineapp.vercel.app/tv"
+        openGraph={{
+          url: "https://cineapp.vercel.app/tv",
+          title: "Cineapp | TV",
+          description:
+            "Saiba tudo sobre séries de tv, como nota, diretores, orçamento, bilheteria, semelhantes, recomendadose temporadas!",
+          images: [
+            {
+              url: "https://cineapp.vercel.app/img/tv.jpg",
+              width: 1280,
+              height: 720,
+              alt: "Cineapp | Filmes",
+            },
+          ],
+        }}
+      />
 
       <Content>
         <div className="title">

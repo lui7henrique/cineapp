@@ -48,20 +48,22 @@ export default function Movie({
     locale: brazilLocale,
   });
 
+  console.log(`${details.overview.slice(0, 100)}...`);
+
   return (
     <>
       <title>{details.title}</title>
       <NextSeo
         title={details.title}
-        description={details.overview.slice(0, 100) + "..."}
+        description={`${details.overview.slice(0, 100)}...`}
         canonical={`https://cineapp.vercel.app/movies/${details.id}`}
         openGraph={{
           url: `https://cineapp.vercel.app/movies/${details.id}`,
           title: details.title,
-          description: details.overview,
+          description: `${details.overview.slice(0, 100)}...`,
           images: [
             {
-              url: `https://image.tmdb.org/t/p/w500/${details.backdrop_path}`,
+              url: `https://image.tmdb.org/t/p/original/${details.backdrop_path}`,
               width: 1280,
               height: 720,
               alt: details.title,

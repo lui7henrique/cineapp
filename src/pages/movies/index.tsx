@@ -139,7 +139,7 @@ export default function Movies({
               url: "https://cineapp.vercel.app/img/movies.jpg",
               width: 1280,
               height: 720,
-              alt: "Cineapp",
+              alt: "Cineapp | Filmes",
             },
           ],
         }}
