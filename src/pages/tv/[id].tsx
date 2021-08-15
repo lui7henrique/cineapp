@@ -4,6 +4,7 @@ import { parseISO, format } from "date-fns";
 import brazilLocale from "date-fns/locale/pt";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
+import Head from "next/head";
 import Link from "next/link";
 
 import { Banner } from "../../components/Banner";
@@ -35,162 +36,162 @@ export default function TV({
   const provider = providers.results.BR;
 
   return (
-    <Container>
-      <title>{details.name}</title>
-      <meta name="description" content={`Cineapp | ${details.name}`} />
-      <meta property="og:title" content={`Cineapp | ${details.name}`} />
-      <meta property="og:description" content={details.overview} />
-      <meta
-        property="og:url"
-        content={`https://cineapp.vercel.app/tv/${details.id}`}
-      />
-      <meta property="og:type" content="website" />
-      <NextSeo
-        title={details.name}
-        description={`${details.overview.slice(0, 100)}...`}
-        canonical={`https://cineapp.vercel.app/tv/${details.id}`}
-        openGraph={{
-          url: `https://cineapp.vercel.app/tv/${details.id}`,
-          title: details.name,
-          description: `${details.overview.slice(0, 100)}...`,
-          images: [
-            {
-              url: `https://image.tmdb.org/t/p/original/${details.backdrop_path}`,
-              width: 1280,
-              height: 720,
-              alt: details.name,
-            },
-          ],
-        }}
-      />
+    <>
+      <Head>
+        <title>{details.name}</title>
+        <NextSeo
+          title={details.name}
+          description={`${details.overview.slice(0, 100)}...`}
+          canonical={`https://cineapp.vercel.app/tv/${details.id}`}
+          openGraph={{
+            url: `https://cineapp.vercel.app/tv/${details.id}`,
+            title: details.name,
+            description: `${details.overview.slice(0, 100)}...`,
+            images: [
+              {
+                url: `https://image.tmdb.org/t/p/original/${details.backdrop_path}`,
+                width: 1280,
+                height: 720,
+                alt: details.name,
+              },
+            ],
+          }}
+        />
+      </Head>
+      <Container>
+        <Banner
+          backdrop_path={details.backdrop_path}
+          title={details.name}
+          vote_average={details.vote_average}
+          vote_count={details.vote_count}
+          videos={videos}
+          seasons={details.number_of_seasons}
+          episodes={details.number_of_episodes}
+          tagline={details.tagline}
+          id={details.id}
+          poster_path={details.poster_path}
+          type="tv"
+        />
+        <Content>
+          <main>
+            <aside>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
+                alt={details.name}
+                className="poster"
+              />
+            </aside>
 
-      <Banner
-        backdrop_path={details.backdrop_path}
-        title={details.name}
-        vote_average={details.vote_average}
-        vote_count={details.vote_count}
-        videos={videos}
-        seasons={details.number_of_seasons}
-        episodes={details.number_of_episodes}
-        tagline={details.tagline}
-        id={details.id}
-        poster_path={details.poster_path}
-        type="tv"
-      />
-      <Content>
-        <main>
-          <aside>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
-              alt={details.name}
-              className="poster"
-            />
-          </aside>
+            <article>
+              <h1>Informações</h1>
+              <section>
+                <p>
+                  <strong>Sinopse: </strong>
+                  {details.overview}
+                </p>
+                <p>
+                  <strong>Criador por: </strong>
+                  {details.created_by.map((author, index) => {
+                    return (
+                      <Link href={`/person/${author.id}`} key={author.id}>
+                        <a>
+                          {index === details.created_by.length - 1
+                            ? author.name + "."
+                            : "" + author.name + ", "}
+                        </a>
+                      </Link>
+                    );
+                  })}
+                </p>
+                <p>
+                  <strong>Genêros: </strong>
+                  {details.genres.map((genre, index) => {
+                    return index === details.genres.length - 1
+                      ? genre.name + "."
+                      : "" + genre.name + ", ";
+                  })}
+                </p>
+                <p>
+                  <strong>Lançamento: </strong>
+                  {details.first_air_date !== null &&
+                    format(
+                      parseISO(details.first_air_date),
+                      "dd 'de' MMMM 'de' yyyy",
+                      {
+                        locale: brazilLocale,
+                      }
+                    )}
+                </p>
+                <p>
+                  <strong>Produtora: </strong>
+                  {details.production_companies[0].name}
+                </p>
+              </section>
+              <section className="providers">
+                <h1>Onde assistir? </h1>
 
-          <article>
-            <h1>Informações</h1>
-            <section>
-              <p>
-                <strong>Sinopse: </strong>
-                {details.overview}
-              </p>
-              <p>
-                <strong>Criador por: </strong>
-                {details.created_by.map((author, index) => {
-                  return (
-                    <Link href={`/person/${author.id}`} key={author.id}>
-                      <a>
-                        {index === details.created_by.length - 1
-                          ? author.name + "."
-                          : "" + author.name + ", "}
-                      </a>
-                    </Link>
-                  );
-                })}
-              </p>
-              <p>
-                <strong>Genêros: </strong>
-                {details.genres.map((genre, index) => {
-                  return index === details.genres.length - 1
-                    ? genre.name + "."
-                    : "" + genre.name + ", ";
-                })}
-              </p>
-              <p>
-                <strong>Lançamento: </strong>
-                {details.first_air_date !== null &&
-                  format(
-                    parseISO(details.first_air_date),
-                    "dd 'de' MMMM 'de' yyyy",
-                    {
-                      locale: brazilLocale,
-                    }
+                {provider && (
+                  <div className="provider">
+                    <div>
+                      {provider.flatrate &&
+                        provider.flatrate.map((item) => {
+                          return (
+                            <a
+                              href={providers.results.BR.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              key={item.provider_id}
+                            >
+                              <img
+                                src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
+                                alt={item.provider_name}
+                              />
+                            </a>
+                          );
+                        })}
+                    </div>
+                  </div>
+                )}
+              </section>
+            </article>
+          </main>
+          <article className="seasons">
+            <h1>Temporadas</h1>
+            {details.seasons.map((season) => {
+              return (
+                <div key={season.id}>
+                  {season.poster_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${season.poster_path}`}
+                      alt={season.name}
+                    />
+                  ) : (
+                    <img
+                      src="https://i.ibb.co/k6QMQ8T/Screenshot-7.jpg"
+                      alt=""
+                    />
                   )}
-              </p>
-              <p>
-                <strong>Produtora: </strong>
-                {details.production_companies[0].name}
-              </p>
-            </section>
-            <section className="providers">
-              <h1>Onde assistir? </h1>
-
-              {provider && (
-                <div className="provider">
-                  <div>
-                    {provider.flatrate &&
-                      provider.flatrate.map((item) => {
-                        return (
-                          <a
-                            href={providers.results.BR.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            key={item.provider_id}
-                          >
-                            <img
-                              src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
-                              alt={item.provider_name}
-                            />
-                          </a>
-                        );
-                      })}
+                  <div className="infos">
+                    <h2>{season.name}</h2>
+                    {season.overview !== "" ? (
+                      <p>{season.overview}</p>
+                    ) : (
+                      <p>Sem informações sobre 🙁</p>
+                    )}
                   </div>
                 </div>
-              )}
-            </section>
+              );
+            })}
           </article>
-        </main>
-        <article className="seasons">
-          <h1>Temporadas</h1>
-          {details.seasons.map((season) => {
-            return (
-              <div key={season.id}>
-                {season.poster_path ? (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${season.poster_path}`}
-                    alt={season.name}
-                  />
-                ) : (
-                  <img src="https://i.ibb.co/k6QMQ8T/Screenshot-7.jpg" alt="" />
-                )}
-                <div className="infos">
-                  <h2>{season.name}</h2>
-                  {season.overview !== "" ? (
-                    <p>{season.overview}</p>
-                  ) : (
-                    <p>Sem informações sobre 🙁</p>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </article>
-        {recommendations.results.length > 1 && (
-          <Recommendations recommendations={recommendations} type="tv" />
-        )}
-        {similar.results.length > 1 && <Similar similar={similar} type="tv" />}
-      </Content>
-    </Container>
+          {recommendations.results.length > 1 && (
+            <Recommendations recommendations={recommendations} type="tv" />
+          )}
+          {similar.results.length > 1 && (
+            <Similar similar={similar} type="tv" />
+          )}
+        </Content>
+      </Container>
+    </>
   );
 }
 

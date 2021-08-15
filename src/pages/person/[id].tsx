@@ -2,6 +2,7 @@
 import { GetServerSideProps, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
 
 import { Credits } from "../../components/Credits";
 import { api } from "../../services/api";
@@ -20,57 +21,49 @@ export default function Person({
   tvCredits,
 }: IPersonProps) {
   return (
-    <Container>
-      <title>{details.name}</title>
-      <meta name="description" content={`Cineapp | ${details.name}`} />
-      <meta property="og:title" content={`Cineapp | ${details.name}`} />
-      <meta
-        property="og:description"
-        content={`${details.biography.slice(0, 100)}...`}
-      />
-      <meta
-        property="og:url"
-        content={`https://cineapp.vercel.app/person/${details.id}`}
-      />
-      <meta property="og:type" content="website" />
+    <>
+      <Head>
+        <title>{details.name}</title>
+      </Head>
+      <Container>
+        <NextSeo
+          title={details.biography}
+          description={`${details.biography.slice(0, 100)}...`}
+          canonical={`https://cineapp.vercel.app/person/${details.id}`}
+          openGraph={{
+            url: `https://cineapp.vercel.app/person/${details.id}`,
+            title: details.name,
+            description: `${details.biography.slice(0, 100)}...`,
+            images: [
+              {
+                url: `https://image.tmdb.org/t/p/original/${details.profile_path}`,
+                alt: details.name,
+                height: 1280,
+                width: 720,
+              },
+            ],
+          }}
+        />
 
-      <NextSeo
-        title={details.biography}
-        description={`${details.biography.slice(0, 100)}...`}
-        canonical={`https://cineapp.vercel.app/person/${details.id}`}
-        openGraph={{
-          url: `https://cineapp.vercel.app/person/${details.id}`,
-          title: details.name,
-          description: `${details.biography.slice(0, 100)}...`,
-          images: [
-            {
-              url: `https://image.tmdb.org/t/p/original/${details.profile_path}`,
-              width: 450,
-              height: 670,
-              alt: details.name,
-            },
-          ],
-        }}
-      />
+        <Content>
+          <main>
+            <aside>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${details.profile_path}`}
+                alt={`Poster ${details.name}`}
+              />
+            </aside>
+            <section>
+              <h1>{details.name}</h1>
+              <p>{details.biography}</p>
+            </section>
+          </main>
 
-      <Content>
-        <main>
-          <aside>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${details.profile_path}`}
-              alt={`Poster ${details.name}`}
-            />
-          </aside>
-          <section>
-            <h1>{details.name}</h1>
-            <p>{details.biography}</p>
-          </section>
-        </main>
-
-        <Credits title="Filmes" list={movieCredits} type="movies" />
-        <Credits title="Séries" list={tvCredits} type="tv" />
-      </Content>
-    </Container>
+          <Credits title="Filmes" list={movieCredits} type="movies" />
+          <Credits title="Séries" list={tvCredits} type="tv" />
+        </Content>
+      </Container>
+    </>
   );
 }
 

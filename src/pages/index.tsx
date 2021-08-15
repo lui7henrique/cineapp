@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
+import Head from "next/head";
 
 import { CardList } from "../components/CardList";
 import { Highlight } from "../components/Highlight";
@@ -23,47 +24,55 @@ export default function Home({
   topRatedTv,
 }: HomeProps) {
   return (
-    <Container>
-      <title>Cineapp</title>
-      <NextSeo
-        title="Cineapp"
-        description="Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤"
-        canonical="https://cineapp.vercel.app/"
-        openGraph={{
-          url: "https://cineapp.vercel.app/",
-          title: "Cineapp",
-          description:
-            "Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤",
-          images: [
-            {
-              url: "https://cineapp.vercel.app/img/cover.jpg",
-              width: 1280,
-              height: 720,
-              alt: "Cineapp",
-            },
-          ],
-        }}
-      />
-      <Content>
-        <Highlight movie={popularMovies[0]} tv={popularTv[0]} />
-        <CardList
-          title="🎥 Filmes populares"
-          list={popularMovies.slice(1, popularMovies.length)}
-          type="movies"
+    <>
+      <Head>
+        <title>Cineapp</title>
+        <NextSeo
+          title="Cineapp"
+          description="Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤"
+          canonical="https://cineapp.vercel.app/"
+          openGraph={{
+            url: "https://cineapp.vercel.app/",
+            title: "Cineapp",
+            description:
+              "Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤",
+            images: [
+              {
+                url: "https://cineapp.vercel.app/img/cover.jpg",
+                width: 1920,
+                height: 1080,
+                alt: "Cineapp",
+              },
+            ],
+          }}
         />
-        <CardList
-          title="✅ Filmes bem avaliados"
-          list={topRatedMovies}
-          type="movies"
-        />
-        <CardList
-          title="📺 Séries populares"
-          list={popularTv.slice(1, popularTv.length)}
-          type="tv"
-        />
-        <CardList title="✅ Séries bem avaliadas" list={topRatedTv} type="tv" />
-      </Content>
-    </Container>
+      </Head>
+      <Container>
+        <Content>
+          <Highlight movie={popularMovies[0]} tv={popularTv[0]} />
+          <CardList
+            title="🎥 Filmes populares"
+            list={popularMovies.slice(1, popularMovies.length)}
+            type="movies"
+          />
+          <CardList
+            title="✅ Filmes bem avaliados"
+            list={topRatedMovies}
+            type="movies"
+          />
+          <CardList
+            title="📺 Séries populares"
+            list={popularTv.slice(1, popularTv.length)}
+            type="tv"
+          />
+          <CardList
+            title="✅ Séries bem avaliadas"
+            list={topRatedTv}
+            type="tv"
+          />
+        </Content>
+      </Container>
+    </>
   );
 }
 

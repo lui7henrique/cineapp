@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -32,7 +33,9 @@ export default function Search({ movies, tv, people }: ISearchProps) {
 
   return (
     <>
-      <title>{search}</title>
+      <Head>
+        <title>{search}</title>
+      </Head>
       <Container>
         <Content>
           {noResults ? (

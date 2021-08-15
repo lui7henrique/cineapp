@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-title-in-document-head */
 /* eslint-disable @next/next/no-img-element */
 
 import { parseISO, format } from "date-fns";
 import brazilLocale from "date-fns/locale/pt";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
+import Head from "next/head";
 import Link from "next/link";
 
 import { Banner } from "../../components/Banner";
@@ -52,33 +54,27 @@ export default function Movie({
 
   return (
     <>
-      <title>{details.title}</title>
-      <meta name="description" content={`Cineapp | ${details.title}`} />
-      <meta property="og:title" content={`Cineapp | ${details.title}`} />
-      <meta property="og:description" content={details.overview} />
-      <meta
-        property="og:url"
-        content={`https://cineapp.vercel.app/movies/${details.id}`}
-      />
-      <meta property="og:type" content="website" />
-      <NextSeo
-        title={details.title}
-        description={`${details.overview.slice(0, 100)}...`}
-        canonical={`https://cineapp.vercel.app/movies/${details.id}`}
-        openGraph={{
-          url: `https://cineapp.vercel.app/movies/${details.id}`,
-          title: details.title,
-          description: `${details.overview.slice(0, 100)}...`,
-          images: [
-            {
-              url: `https://image.tmdb.org/t/p/original/${details.backdrop_path}`,
-              width: 1280,
-              height: 720,
-              alt: details.title,
-            },
-          ],
-        }}
-      />
+      <Head>
+        <title>{details.title}</title>
+        <NextSeo
+          title={details.title}
+          description={`${details.overview.slice(0, 100)}...`}
+          canonical={`https://cineapp.vercel.app/movies/${details.id}`}
+          openGraph={{
+            url: `https://cineapp.vercel.app/movies/${details.id}`,
+            title: details.title,
+            description: `${details.overview.slice(0, 100)}...`,
+            images: [
+              {
+                url: `https://image.tmdb.org/t/p/original/${details.backdrop_path}`,
+                width: 1280,
+                height: 720,
+                alt: details.title,
+              },
+            ],
+          }}
+        />
+      </Head>
 
       <Container>
         <Banner
