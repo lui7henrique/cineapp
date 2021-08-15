@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetServerSideProps, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 import { useRouter } from "next/dist/client/router";
 
 import { Credits } from "../../components/Credits";
@@ -21,6 +22,25 @@ export default function Person({
   return (
     <Container>
       <title>{details.name}</title>
+      <NextSeo
+        title={details.biography}
+        description={`${details.biography.slice(0, 100)}...`}
+        canonical={`https://cineapp.vercel.app/person/${details.id}`}
+        openGraph={{
+          url: `https://cineapp.vercel.app/person/${details.id}`,
+          title: details.name,
+          description: `${details.biography.slice(0, 100)}...`,
+          images: [
+            {
+              url: `https://image.tmdb.org/t/p/w500/${details.profile_path}`,
+              width: 450,
+              height: 670,
+              alt: details.name,
+            },
+          ],
+        }}
+      />
+
       <Content>
         <main>
           <aside>

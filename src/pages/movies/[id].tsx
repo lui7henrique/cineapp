@@ -53,7 +53,7 @@ export default function Movie({
       <title>{details.title}</title>
       <NextSeo
         title={details.title}
-        description={details.overview}
+        description={details.overview.slice(0, 100) + "..."}
         canonical={`https://cineapp.vercel.app/movies/${details.id}`}
         openGraph={{
           url: `https://cineapp.vercel.app/movies/${details.id}`,

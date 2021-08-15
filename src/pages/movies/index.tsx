@@ -131,7 +131,7 @@ export default function Movies({
         canonical="https://cineapp.vercel.app/movies"
         openGraph={{
           url: "https://cineapp.vercel.app/movies",
-          title: "Cineapp",
+          title: "Cineapp | Filmes",
           description:
             "Saiba tudo sobre filmes, como nota, elenco, orçamento, bilheteria, semelhantes e recomendados! ",
           images: [
