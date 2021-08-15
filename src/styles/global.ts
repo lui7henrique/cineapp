@@ -7,11 +7,6 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  }
-
   :root {
     --background: #141620;
     --shape: #090B10;
@@ -35,6 +30,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {  
+    font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1rem;
     background-color: var(--background);
     color: var(--title);
@@ -50,22 +46,16 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body::-webkit-scrollbar {
-    width: 5px; /* width of the entire scrollbar */
+    width: 5px;
   }
 
   body::-webkit-scrollbar-track {
-    background: var(--shape); /* color of the tracking area */
+    background: var(--shape);
   }
 
   body::-webkit-scrollbar-thumb {
-    background-color: var(--primary); /* color of the scroll thumb */
-    border-radius: 20px; /* roundness of the scroll thumb */
-    border: 3px solid var(--primary); /* creates padding around scroll thumb */
-  }
-
-  .loader {
-    position: fixed;
-    top: 47%;
-    left: 47%;
+    background-color: var(--primary);
+    border-radius: 20px;
+    border: 3px solid var(--primary);
   }
 `;
