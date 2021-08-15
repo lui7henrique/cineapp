@@ -1,8 +1,7 @@
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
-import Router from "next/router";
+import Head from "next/head";
 import NextNprogress from "nextjs-progressbar";
-import { useState } from "react";
 import "../services/firebase";
 
 import SEO from "../../next-seo.config";
@@ -14,18 +13,25 @@ import { GlobalStyles } from "../styles/global";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Head>
+        <link rel="shortcut icon" href="/img/movie.png" />
+        <link rel="apple-touch-icon" href="/img/movie.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="rgba(0,53,157,1)" />
+      </Head>
+      <DefaultSeo {...SEO} />
+      <GlobalStyles />
+      <NextNprogress
+        color="linear-gradient(90deg, rgba(0,53,157,1) 5%, rgba(0,111,255,1) 50%, rgba(63,204,255,1) 100%)"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={5}
+        showOnShallow={true}
+      />
+
       <PlayerProvider>
         <AuthContextProvider>
-          <GlobalStyles />
-          <DefaultSeo {...SEO} />
           <Header />
-          <NextNprogress
-            color="linear-gradient(90deg, rgba(0,53,157,1) 5%, rgba(0,111,255,1) 50%, rgba(63,204,255,1) 100%)"
-            startPosition={0.3}
-            stopDelayMs={200}
-            height={5}
-            showOnShallow={true}
-          />
           <Component {...pageProps} />
         </AuthContextProvider>
       </PlayerProvider>

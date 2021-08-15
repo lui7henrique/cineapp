@@ -10,8 +10,6 @@ export const Highlight = styled.div<HighlightType>`
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
     ${(props) =>
       `url(https://image.tmdb.org/t/p/original/${props.backdrop_path})`};
-  /* background-image: ${(props) =>
-    `url(https://image.tmdb.org/t/p/original/${props.backdrop_path})`}; */
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
