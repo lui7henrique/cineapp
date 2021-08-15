@@ -33,9 +33,7 @@ export default function Search({ movies, tv, people }: ISearchProps) {
 
   return (
     <>
-      <Head>
-        <title>{search}</title>
-      </Head>
+      <title>{search}</title>
       <Container>
         <Content>
           {noResults ? (

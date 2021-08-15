@@ -2,7 +2,6 @@
 import { GetServerSideProps, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/dist/client/router";
-import Head from "next/head";
 
 import { Credits } from "../../components/Credits";
 import { api } from "../../services/api";
@@ -21,49 +20,45 @@ export default function Person({
   tvCredits,
 }: IPersonProps) {
   return (
-    <>
-      <Head>
-        <title>{details.name}</title>
-      </Head>
-      <Container>
-        <NextSeo
-          title={details.biography}
-          description={`${details.biography.slice(0, 100)}...`}
-          canonical={`https://cineapp.vercel.app/person/${details.id}`}
-          openGraph={{
-            url: `https://cineapp.vercel.app/person/${details.id}`,
-            title: details.name,
-            description: `${details.biography.slice(0, 100)}...`,
-            images: [
-              {
-                url: `https://image.tmdb.org/t/p/original/${details.profile_path}`,
-                alt: details.name,
-                height: 1280,
-                width: 720,
-              },
-            ],
-          }}
-        />
+    <Container>
+      <title>{details.name}</title>
+      <NextSeo
+        title={details.biography}
+        description={`${details.biography.slice(0, 100)}...`}
+        canonical={`https://cineapp.vercel.app/person/${details.id}`}
+        openGraph={{
+          url: `https://cineapp.vercel.app/person/${details.id}`,
+          title: details.name,
+          description: `${details.biography.slice(0, 100)}...`,
+          images: [
+            {
+              url: `https://image.tmdb.org/t/p/original/${details.profile_path}`,
+              alt: details.name,
+              height: 1280,
+              width: 720,
+            },
+          ],
+        }}
+      />
 
-        <Content>
-          <main>
-            <aside>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${details.profile_path}`}
-                alt={`Poster ${details.name}`}
-              />
-            </aside>
-            <section>
-              <h1>{details.name}</h1>
-              <p>{details.biography}</p>
-            </section>
-          </main>
+      <Content>
+        <main>
+          <aside>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${details.profile_path}`}
+              alt={`Poster ${details.name}`}
+            />
+          </aside>
+          <section>
+            <h1>{details.name}</h1>
+            <p>{details.biography}</p>
+          </section>
+        </main>
 
-          <Credits title="Filmes" list={movieCredits} type="movies" />
-          <Credits title="Séries" list={tvCredits} type="tv" />
-        </Content>
-      </Container>
-    </>
+        <Credits title="Filmes" list={movieCredits} type="movies" />
+        <Credits title="Séries" list={tvCredits} type="tv" />
+      </Content>
+    </Container>
   );
 }
 

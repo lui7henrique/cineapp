@@ -25,28 +25,26 @@ export default function Home({
 }: HomeProps) {
   return (
     <>
-      <Head>
-        <title>Cineapp</title>
-        <NextSeo
-          title="Cineapp"
-          description="Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤"
-          canonical="https://cineapp.vercel.app/"
-          openGraph={{
-            url: "https://cineapp.vercel.app/",
-            title: "Cineapp",
-            description:
-              "Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤",
-            images: [
-              {
-                url: "https://cineapp.vercel.app/img/cover.jpg",
-                width: 1920,
-                height: 1080,
-                alt: "Cineapp",
-              },
-            ],
-          }}
-        />
-      </Head>
+      <title>Cineapp</title>
+      <NextSeo
+        title="Cineapp"
+        description="Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤"
+        canonical="https://cineapp.vercel.app/"
+        openGraph={{
+          url: "https://cineapp.vercel.app/",
+          title: "Cineapp",
+          description:
+            "Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤",
+          images: [
+            {
+              url: "https://cineapp.vercel.app/img/cover.jpg",
+              width: 1920,
+              height: 1080,
+              alt: "Cineapp",
+            },
+          ],
+        }}
+      />
       <Container>
         <Content>
           <Highlight movie={popularMovies[0]} tv={popularTv[0]} />

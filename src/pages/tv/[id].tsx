@@ -37,27 +37,25 @@ export default function TV({
 
   return (
     <>
-      <Head>
-        <title>{details.name}</title>
-        <NextSeo
-          title={details.name}
-          description={`${details.overview.slice(0, 100)}...`}
-          canonical={`https://cineapp.vercel.app/tv/${details.id}`}
-          openGraph={{
-            url: `https://cineapp.vercel.app/tv/${details.id}`,
-            title: details.name,
-            description: `${details.overview.slice(0, 100)}...`,
-            images: [
-              {
-                url: `https://image.tmdb.org/t/p/original/${details.backdrop_path}`,
-                width: 1280,
-                height: 720,
-                alt: details.name,
-              },
-            ],
-          }}
-        />
-      </Head>
+      <title>{details.name}</title>
+      <NextSeo
+        title={details.name}
+        description={`${details.overview.slice(0, 100)}...`}
+        canonical={`https://cineapp.vercel.app/tv/${details.id}`}
+        openGraph={{
+          url: `https://cineapp.vercel.app/tv/${details.id}`,
+          title: details.name,
+          description: `${details.overview.slice(0, 100)}...`,
+          images: [
+            {
+              url: `https://image.tmdb.org/t/p/original/${details.backdrop_path}`,
+              width: 1280,
+              height: 720,
+              alt: details.name,
+            },
+          ],
+        }}
+      />
       <Container>
         <Banner
           backdrop_path={details.backdrop_path}
