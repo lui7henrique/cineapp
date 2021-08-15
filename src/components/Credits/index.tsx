@@ -17,10 +17,16 @@ export function Credits({ title, list, type }: ICreditsProps) {
   const [targetsCrew, updateTargetsCrew] = useState(8);
 
   const cast = list.cast;
-  const filteredCast = cast.filter((item: any) => item.backdrop_path !== null);
+  const filteredCast = cast.filter(
+    (item: any) => item.backdrop_path !== null && item.character !== ""
+  );
 
   const crew = list.crew;
-  const filteredCrew = crew.filter((item: any) => item.backdrop_path !== null);
+  const filteredCrew = crew.filter(
+    (item: any) => item.backdrop_path !== null && item.character !== ""
+  );
+
+  console.log(cast);
 
   return (
     <Container>
@@ -36,28 +42,23 @@ export function Credits({ title, list, type }: ICreditsProps) {
               <div key={item.id}>
                 <Link href={`/${type}/${item.id}`}>
                   <a>
-                    {item.backdrop_path ? (
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                        alt={item.name}
-                      />
-                    ) : (
-                      <img
-                        src="https://i.ibb.co/2dkrb1N/Screenshot-6.jpg"
-                        alt="Undefined"
-                      />
-                    )}
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                      alt={item.name}
+                    />
                   </a>
                 </Link>
-                <div className="infos">
+                <div
+                  className={`infos ${item.character ? "no-character" : ""}`}
+                >
                   <p className="title">{item.name ?? item.title}</p>
-                  <p className="character">{item.character}</p>
+                  <p className="character">{item.character ?? item.job}</p>
                 </div>
               </div>
             );
           })}
       </Content>
-      {filteredCast.length > 1 && !(filteredCast.length < 8) && (
+      {filteredCast.length > 1 && !(filteredCast.length <= 8) && (
         <div className="expand">
           {targetsCast === filteredCast.length ? (
             <MdExpandMore
@@ -102,12 +103,13 @@ export function Credits({ title, list, type }: ICreditsProps) {
                 </Link>
                 <div className="infos">
                   <p className="title crew">{item.name ?? item.title}</p>
+                  <p className="character">{item.character ?? item.job}</p>
                 </div>
               </div>
             );
           })}
       </Content>
-      {filteredCrew.length > 1 && !(filteredCrew.length < 8) && (
+      {filteredCrew.length > 1 && !(filteredCrew.length <= 8) && (
         <div className="expand">
           {targetsCrew === filteredCrew.length ? (
             <MdExpandMore

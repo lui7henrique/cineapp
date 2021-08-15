@@ -84,10 +84,6 @@ export const Content = styled.section`
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-
-        &.crew {
-          padding-bottom: 1.3rem;
-        }
       }
 
       .character {

@@ -30,4 +30,5 @@ type Item = {
   title?: string;
   name?: string;
   character?: string;
+  job?: string;
 };
