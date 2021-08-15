@@ -37,6 +37,14 @@ export default function TV({
   return (
     <Container>
       <title>{details.name}</title>
+      <meta name="description" content={`Cineapp | ${details.name}`} />
+      <meta property="og:title" content={`Cineapp | ${details.name}`} />
+      <meta property="og:description" content={details.overview} />
+      <meta
+        property="og:url"
+        content={`https://cineapp.vercel.app/tv/${details.id}`}
+      />
+      <meta property="og:type" content="website" />
       <NextSeo
         title={details.name}
         description={`${details.overview.slice(0, 100)}...`}

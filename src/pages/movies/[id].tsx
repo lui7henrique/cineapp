@@ -53,6 +53,14 @@ export default function Movie({
   return (
     <>
       <title>{details.title}</title>
+      <meta name="description" content={`Cineapp | ${details.title}`} />
+      <meta property="og:title" content={`Cineapp | ${details.title}`} />
+      <meta property="og:description" content={details.overview} />
+      <meta
+        property="og:url"
+        content={`https://cineapp.vercel.app/movies/${details.id}`}
+      />
+      <meta property="og:type" content="website" />
       <NextSeo
         title={details.title}
         description={`${details.overview.slice(0, 100)}...`}

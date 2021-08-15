@@ -125,6 +125,14 @@ export default function Movies({
   return (
     <Container>
       <title>Cineapp | Filmes</title>
+      <meta name="description" content="Cineapp | Filmes" />
+      <meta property="og:title" content="Cineapp | Filmes" />
+      <meta
+        property="og:description"
+        content="Saiba tudo sobre filmes, como nota, elenco, orçamento, bilheteria, semelhantes e recomendados! "
+      />
+      <meta property="og:url" content="https://cineapp.vercel.app/movies" />
+      <meta property="og:type" content="website" />
       <NextSeo
         title="Cineapp | Filmes"
         description="Saiba tudo sobre filmes, como nota, elenco, orçamento, bilheteria, semelhantes e recomendados! "

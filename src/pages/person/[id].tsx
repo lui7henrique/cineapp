@@ -22,6 +22,18 @@ export default function Person({
   return (
     <Container>
       <title>{details.name}</title>
+      <meta name="description" content={`Cineapp | ${details.name}`} />
+      <meta property="og:title" content={`Cineapp | ${details.name}`} />
+      <meta
+        property="og:description"
+        content={`${details.biography.slice(0, 100)}...`}
+      />
+      <meta
+        property="og:url"
+        content={`https://cineapp.vercel.app/person/${details.id}`}
+      />
+      <meta property="og:type" content="website" />
+
       <NextSeo
         title={details.biography}
         description={`${details.biography.slice(0, 100)}...`}
