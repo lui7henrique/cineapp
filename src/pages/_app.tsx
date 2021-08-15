@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/img/movie.png" />
         <link rel="apple-touch-icon" href="/img/movie.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="rgba(0,53,157,1)" />
+        <meta name="theme-color" content="#00359d" />
       </Head>
       <DefaultSeo {...SEO} />
       <GlobalStyles />

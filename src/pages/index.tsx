@@ -25,14 +25,6 @@ export default function Home({
   return (
     <Container>
       <title>Cineapp</title>
-      <meta name="description" content="Cineapp" />
-      <meta property="og:title" content="Cineapp" />
-      <meta
-        property="og:description"
-        content="Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤"
-      />
-      <meta property="og:url" content="https://cineapp.vercel.app/" />
-      <meta property="og:type" content="website" />
       <NextSeo
         title="Cineapp"
         description="Filmes, séries, atores e watchlists pra quem ama tudo isso! 🖤"
