@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/img/movie.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#141620" />
+        <meta name="twitter:card" content="summary_large_image"></meta>
       </Head>
       <DefaultSeo {...SEO} />
       <GlobalStyles />
