@@ -22,7 +22,7 @@ export function Highlight({ movie, tv }: HighlightType) {
             <div className="item">
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                alt=""
+                alt={movie.name}
               />
               <div className="infos">
                 <div>
@@ -42,7 +42,7 @@ export function Highlight({ movie, tv }: HighlightType) {
             <div className="item">
               <img
                 src={`https://image.tmdb.org/t/p/original/${tv.backdrop_path}`}
-                alt=""
+                alt={movie.name}
               />
               <div className="infos">
                 <div>

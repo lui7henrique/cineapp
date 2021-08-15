@@ -51,7 +51,7 @@ export default function Search({ movies, tv, people }: ISearchProps) {
                               <div key={movie.id} className="movie">
                                 <img
                                   src={`https://image.tmdb.org/t/p/w500/${movie.poster}`}
-                                  alt=""
+                                  alt={movie.title}
                                 />
                                 <p>{movie.title}</p>
                               </div>
@@ -104,7 +104,7 @@ export default function Search({ movies, tv, people }: ISearchProps) {
                               {personal.profile ? (
                                 <img
                                   src={`https://image.tmdb.org/t/p/w500/${personal.profile}`}
-                                  alt=""
+                                  alt={personal.name}
                                 />
                               ) : (
                                 <img

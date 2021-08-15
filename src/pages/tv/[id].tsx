@@ -82,7 +82,7 @@ export default function TV({
           <aside>
             <img
               src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
-              alt=""
+              alt={details.name}
               className="poster"
             />
           </aside>
@@ -149,7 +149,7 @@ export default function TV({
                           >
                             <img
                               src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
-                              alt=""
+                              alt={item.provider_name}
                             />
                           </a>
                         );
@@ -168,7 +168,7 @@ export default function TV({
                 {season.poster_path ? (
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${season.poster_path}`}
-                    alt=""
+                    alt={season.name}
                   />
                 ) : (
                   <img src="https://i.ibb.co/k6QMQ8T/Screenshot-7.jpg" alt="" />

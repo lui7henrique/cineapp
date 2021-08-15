@@ -100,7 +100,7 @@ export default function Movie({
             <div className="details">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
-                alt=""
+                alt={details.title}
                 className="poster"
               />
 
@@ -174,7 +174,7 @@ export default function Movie({
                           return (
                             <img
                               src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
-                              alt=""
+                              alt={item.provider_name}
                               key={item.provider_id}
                             />
                           );
@@ -184,7 +184,7 @@ export default function Movie({
                           return (
                             <img
                               src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`}
-                              alt=""
+                              alt={item.provider_name}
                               key={item.provider_id}
                             />
                           );

@@ -60,7 +60,7 @@ export function Recommendations({
                     <div className="recommendation">
                       <img
                         src={`https://image.tmdb.org/t/p/w500/${recommendation.backdrop_path}`}
-                        alt=""
+                        alt={recommendation.name}
                       />
 
                       <div>

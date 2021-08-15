@@ -39,12 +39,12 @@ export function Credits({ title, list, type }: ICreditsProps) {
                     {item.backdrop_path ? (
                       <img
                         src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                        alt=""
+                        alt={item.name}
                       />
                     ) : (
                       <img
                         src="https://i.ibb.co/2dkrb1N/Screenshot-6.jpg"
-                        alt=""
+                        alt="Undefined"
                       />
                     )}
                   </a>
@@ -90,12 +90,12 @@ export function Credits({ title, list, type }: ICreditsProps) {
                     {item.backdrop_path ? (
                       <img
                         src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                        alt=""
+                        alt={item.name}
                       />
                     ) : (
                       <img
                         src="https://i.ibb.co/2dkrb1N/Screenshot-6.jpg"
-                        alt=""
+                        alt="Undefined"
                       />
                     )}
                   </a>

@@ -51,7 +51,7 @@ export function Similar({ type, similar }: ISimilarProps) {
                   <div className="similar-item">
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                      alt=""
+                      alt={item.title}
                     />
                     <div>
                       <h1>{item.title ? item.title : item.name}</h1>
