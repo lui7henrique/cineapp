@@ -8,8 +8,8 @@
       "type": "img/png"
     }   
   ],
-  "theme_color": "#002A7E",
-  "background_color": "#002A7E",
+  "theme_color": "#141620",
+  "background_color": "#141620",
   "description": "Um projeto simples de filmes e séries",
   "start_url": "/",
   "display": "fullscreen"  
