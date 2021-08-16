@@ -37,37 +37,6 @@
     "eslint-config-next": "11.0.1",
     "eslint-plugin-import-helpers": "^1.1.0",
     "typescript": "^4.3.5"
-  },
-  "babel": {
-    "env": {
-      "development": {
-        "presets": [
-          "next/babel"
-        ],
-        "plugins": [
-          [
-            "styled-components",
-            {
-              "ssr": true,
-              "displayName": true
-            }
-          ]
-        ]
-      },
-      "production": {
-        "presets": [
-          "next/babel"
-        ],
-        "plugins": [
-          [
-            "styled-components",
-            {
-              "ssr": true,
-              "displayName": false
-            }
-          ]
-        ]
-      }
-    }
-  }
+  }   
+  
 }
