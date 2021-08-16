@@ -9,6 +9,5 @@ export const Content = styled.main`
   padding: 2rem;
   display: grid;
   grid-gap: 2rem;
-  width: 100%;
   padding-top: 6rem;
 `;
