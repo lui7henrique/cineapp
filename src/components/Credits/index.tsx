@@ -26,8 +26,6 @@ export function Credits({ title, list, type }: ICreditsProps) {
     (item: any) => item.backdrop_path !== null && item.character !== ""
   );
 
-  console.log(cast);
-
   return (
     <Container>
       {filteredCast.length > 1 && (

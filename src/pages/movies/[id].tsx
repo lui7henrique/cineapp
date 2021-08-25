@@ -48,8 +48,6 @@ export default function Movie({
     locale: brazilLocale,
   });
 
-  console.log(`${details.overview.slice(0, 100)}...`);
-
   return (
     <>
       <title>{details.title}</title>

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import { GetServerSideProps, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/dist/client/router";
@@ -23,7 +24,7 @@ export default function Person({
     <Container>
       <title>{details.name}</title>
       <NextSeo
-        title={details.biography}
+        title={details.name}
         description={`${details.biography.slice(0, 100)}...`}
         canonical={`https://cineapp.vercel.app/person/${details.id}`}
         openGraph={{

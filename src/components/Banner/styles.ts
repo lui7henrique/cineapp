@@ -13,6 +13,7 @@ export const Highlight = styled.div<HighlightType>`
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-position: center;
   padding: auto;
 
   @media (max-width: 800px) {
