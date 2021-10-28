@@ -66,26 +66,11 @@ export default function Person({
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.query;
 
-  const { data: details } = await api.get(`/person/${id}`, {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const { data: details } = await api.get(`/person/${id}`);
 
-  const { data: movieCredits } = await api.get(`person/${id}/movie_credits`, {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const { data: movieCredits } = await api.get(`person/${id}/movie_credits`);
 
-  const { data: tvCredits } = await api.get(`person/${id}/tv_credits`, {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const { data: tvCredits } = await api.get(`person/${id}/tv_credits`);
 
   return {
     props: { details, movieCredits, tvCredits },

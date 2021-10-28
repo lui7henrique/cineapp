@@ -7,6 +7,7 @@ import { CardList } from "../components/CardList";
 import { Highlight } from "../components/Highlight";
 import { api } from "../services/api";
 import { Container, Content } from "../styles/home";
+import { HomeTemplate } from "../templates/Home";
 import { MovieType } from "../types/movie";
 import { TvType } from "../types/tv";
 
@@ -45,8 +46,9 @@ export default function Home({
           ],
         }}
       />
+      <HomeTemplate />
       <Container>
-        <Content>
+        {/* <Content>
           <Highlight movie={popularMovies[0]} tv={popularTv[0]} />
           <CardList
             title="🎥 Filmes populares"
@@ -68,43 +70,23 @@ export default function Home({
             list={topRatedTv}
             type="tv"
           />
-        </Content>
+        </Content> */}
       </Container>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const popularMoviesResponse = await api.get("/movie/popular", {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const popularMoviesResponse = await api.get("/movie/popular");
   const popularMovies = popularMoviesResponse.data.results;
 
-  const topRatedMoviesResponse = await api.get("/movie/top_rated", {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const topRatedMoviesResponse = await api.get("/movie/top_rated");
   const topRatedMovies = topRatedMoviesResponse.data.results;
 
-  const popularTvResponse = await api.get("/tv/popular", {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const popularTvResponse = await api.get("/tv/popular");
   const popularTv = popularTvResponse.data.results;
 
-  const topRatedTvResponse = await api.get("/tv/top_rated", {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const topRatedTvResponse = await api.get("/tv/top_rated");
   const topRatedTv = topRatedTvResponse.data.results;
 
   return {

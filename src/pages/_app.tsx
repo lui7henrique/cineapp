@@ -3,12 +3,14 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import NextNprogress from "nextjs-progressbar";
 import "../services/firebase";
+import { ThemeProvider } from "styled-components";
 
 import SEO from "../../next-seo.config";
 import { Header } from "../components/Header";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import { PlayerProvider } from "../hooks/usePlayer";
 import { GlobalStyles } from "../styles/global";
+import theme from "../styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -30,12 +32,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         showOnShallow={true}
       />
 
-      <PlayerProvider>
-        <AuthContextProvider>
-          <Header />
-          <Component {...pageProps} />
-        </AuthContextProvider>
-      </PlayerProvider>
+      <ThemeProvider theme={theme}>
+        <PlayerProvider>
+          <AuthContextProvider>
+            <Component {...pageProps} />
+          </AuthContextProvider>
+        </PlayerProvider>
+      </ThemeProvider>
     </>
   );
 }

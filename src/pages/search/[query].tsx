@@ -136,9 +136,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const response = await api.get("/search/multi", {
     params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
       query: searchQuery,
-      language: "pt-BR",
     },
   });
 

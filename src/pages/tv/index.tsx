@@ -223,12 +223,7 @@ async function getTvByGenreId(genreId: number) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const popularResponse = await api.get("/tv/popular", {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const popularResponse = await api.get("/tv/popular");
 
   const popular = popularResponse.data.results.map((movie: any) => {
     return {
@@ -241,12 +236,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   });
 
-  const topRatedResponse = await api.get("/tv/top_rated", {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const topRatedResponse = await api.get("/tv/top_rated");
 
   const topRated = topRatedResponse.data.results.map((movie: any) => {
     return {
@@ -259,12 +249,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   });
 
-  const currentResponse = await api.get("/tv/on_the_air", {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_IMBD_API_KEY,
-      language: "pt-BR",
-    },
-  });
+  const currentResponse = await api.get("/tv/on_the_air");
 
   const current = currentResponse.data.results.map((movie: any) => {
     return {
