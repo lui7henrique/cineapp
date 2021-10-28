@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  gap: 1rem;
 `;
 
-export const Content = styled.div`
-  width: calc(100vw - 250px);
+export const Content = styled.div<{ sideBarIsMinimized: boolean }>`
+  width: ${({ sideBarIsMinimized }) =>
+    sideBarIsMinimized ? "calc(100vw - 50px)" : "calc(100vw - 250px)"};
   height: 100vh;
+  overflow: auto;
 `;

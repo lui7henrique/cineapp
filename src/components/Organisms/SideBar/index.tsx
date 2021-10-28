@@ -7,31 +7,33 @@ import { IconButton } from "./NavBarButton";
 import * as S from "./styles";
 import { UserProfile } from "./UserProfile";
 
-export function Sidebar() {
-  const [isMinimized, setIsMinimized] = useState(false);
+interface ISideBarProps {
+  sideBarIsMinimized: boolean;
+  handleToggleSideBarIsMinimized: () => void;
+}
 
-  const handleToggleIsMinimized = () => {
-    setIsMinimized(!isMinimized);
-  };
-
+export function SideBar({
+  sideBarIsMinimized,
+  handleToggleSideBarIsMinimized,
+}: ISideBarProps) {
   return (
-    <S.Container isMinimized={isMinimized}>
-      <S.MinimizeIcon onClick={handleToggleIsMinimized}>
-        {!isMinimized && (
+    <S.Container isMinimized={sideBarIsMinimized}>
+      <S.MinimizeIcon onClick={handleToggleSideBarIsMinimized}>
+        {!sideBarIsMinimized && (
           <S.Icon>
             <Heroicons.HiLogin size={20} />
           </S.Icon>
         )}
       </S.MinimizeIcon>
 
-      <S.Header isMinimized={isMinimized}>
-        {!isMinimized ? (
-          <UserProfile isMinimized={isMinimized} />
+      <S.Header isMinimized={sideBarIsMinimized}>
+        {!sideBarIsMinimized ? (
+          <UserProfile isMinimized={sideBarIsMinimized} />
         ) : (
           <S.Icon>
             <MaterialDesign.MdMenu
               size={20}
-              onClick={handleToggleIsMinimized}
+              onClick={handleToggleSideBarIsMinimized}
             />
           </S.Icon>
         )}
@@ -43,39 +45,39 @@ export function Sidebar() {
             title="Home"
             icon={<MaterialDesign.MdHome size={20} />}
             path="/"
-            isMinimized={isMinimized}
+            isMinimized={sideBarIsMinimized}
           />
 
           <IconButton
             title="Filmes"
             icon={<MaterialDesign.MdMovie size={20} />}
             path="/movies"
-            isMinimized={isMinimized}
+            isMinimized={sideBarIsMinimized}
           />
 
           <IconButton
             title="Séries"
             icon={<MaterialDesign.MdTv size={20} />}
             path="/tv"
-            isMinimized={isMinimized}
+            isMinimized={sideBarIsMinimized}
           />
           <IconButton
             title="Atores"
             icon={<MaterialDesign.MdPeople size={20} />}
             path="/actors"
-            isMinimized={isMinimized}
+            isMinimized={sideBarIsMinimized}
           />
           <IconButton
             title="Watchlist"
             icon={<MaterialDesign.MdList size={20} />}
             path="/watchlist"
-            isMinimized={isMinimized}
+            isMinimized={sideBarIsMinimized}
           />
         </S.Nav>
         <IconButton
-          title="Log-out"
+          title="Log out"
           icon={<BoxIcons.BiLogOut size={20} />}
-          isMinimized={isMinimized}
+          isMinimized={sideBarIsMinimized}
         />
       </S.Content>
     </S.Container>

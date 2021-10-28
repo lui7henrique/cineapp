@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
-import { Sidebar } from "../../components/Organisms/SideBar";
+import { SideBar } from "../../components/Organisms/SideBar";
 import * as S from "./styles";
 
 type IBasicTemplateProps = {
@@ -8,10 +8,19 @@ type IBasicTemplateProps = {
 };
 
 export function BasicTemplate({ children }: IBasicTemplateProps) {
+  const [sideBarIsMinimized, setSideBarIsMinimized] = useState(false);
+
+  const handleToggleSideBarIsMinimized = () => {
+    setSideBarIsMinimized(!sideBarIsMinimized);
+  };
+
   return (
     <S.Container>
-      <Sidebar />
-      <S.Content>{children}</S.Content>
+      <SideBar
+        sideBarIsMinimized={sideBarIsMinimized}
+        handleToggleSideBarIsMinimized={handleToggleSideBarIsMinimized}
+      />
+      <S.Content sideBarIsMinimized={sideBarIsMinimized}>{children}</S.Content>
     </S.Container>
   );
 }

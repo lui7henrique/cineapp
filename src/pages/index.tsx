@@ -6,7 +6,6 @@ import Head from "next/head";
 import { CardList } from "../components/CardList";
 import { Highlight } from "../components/Highlight";
 import { api } from "../services/api";
-import { Container, Content } from "../styles/home";
 import { HomeTemplate } from "../templates/Home";
 import { MovieType } from "../types/movie";
 import { TvType } from "../types/tv";
@@ -46,9 +45,14 @@ export default function Home({
           ],
         }}
       />
-      <HomeTemplate />
-      <Container>
-        {/* <Content>
+      <HomeTemplate
+        popularMovies={popularMovies}
+        topRatedMovies={topRatedMovies}
+        popularTv={popularTv}
+        topRatedTv={topRatedTv}
+      />
+
+      {/* <Content>
           <Highlight movie={popularMovies[0]} tv={popularTv[0]} />
           <CardList
             title="🎥 Filmes populares"
@@ -71,17 +75,16 @@ export default function Home({
             type="tv"
           />
         </Content> */}
-      </Container>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const popularMoviesResponse = await api.get("/movie/popular");
-  const popularMovies = popularMoviesResponse.data.results;
+  const popularMovies: MovieType[] = popularMoviesResponse.data.results;
 
   const topRatedMoviesResponse = await api.get("/movie/top_rated");
-  const topRatedMovies = topRatedMoviesResponse.data.results;
+  const topRatedMovies: MovieType[] = topRatedMoviesResponse.data.results;
 
   const popularTvResponse = await api.get("/tv/popular");
   const popularTv = popularTvResponse.data.results;

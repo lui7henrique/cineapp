@@ -28,13 +28,17 @@ export const GlobalStyles = createGlobalStyle`
       font-size: 87.5%; //14px
     }
   }
+  
 
   body {  
-    font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1rem;
+    font-family: Roboto, sans-serif;    
+
     background-color: var(--background);
     color: var(--title);
-    overflow-x: hidden;
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    
     a {
       text-decoration: none;
       color: white;

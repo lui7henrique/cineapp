@@ -51,7 +51,9 @@ export const Button = styled.div<IButtonProps>`
 `;
 
 export const Title = styled.p`
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 900;
+  color: ${({ theme }) => theme.colors.title};
 `;

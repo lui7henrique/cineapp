@@ -1,17 +1,19 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
   colors: {
-    background: "#141620",
-    shape: "#090B10",
+    background: "#131520",
+    shape: "#090b13",
     primary: "rgba(0,53,157,1)",
     secondary: "#D6AE2F",
     border: "#212b54",
     hover: "#212b54",
-    title: "#BFC4D3",
+    title: "#f9f9f9",
+    text: "#efefef",
     subtitle: "#9e9e9e",
     subtext: "rgb(88, 88, 88)",
     gradient:
       "linear-gradient(90deg, rgba(0,53,157,1) 5%, rgba(0,111,255,1) 50%, rgba(63,204,255,1) 100%)",
+    white: "#f1f1f1",
   },
   sizes: {
     borders: {
