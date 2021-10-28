@@ -1,16 +1,38 @@
+import * as MaterialDesign from "react-icons/md";
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 250px;
+export const Container = styled.div<{ isMinimized: boolean }>`
+  width: ${({ isMinimized }) => (isMinimized ? "50px" : "250px")};
   height: 100vh;
   background: ${(props) => props.theme.colors.shape};
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+  transition: width 0.2s ease-in-out;
 `;
 
-export const Header = styled.div`
-  padding: 1rem;
+export const Icon = styled.div`
+  svg {
+    cursor: pointer;
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+`;
+
+export const MinimizeIcon = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+`;
+
+export const Header = styled.div<{ isMinimized: boolean }>`
+  padding: 0.9rem;
+  border-bottom: 1px solid ${(props) => props.theme.colors.background};
+  display: flex;
+  align-items: center;
 `;
 
 export const Content = styled.div`

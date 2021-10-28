@@ -7,4 +7,7 @@ module.exports = {
     dest: "public",
     disable: !isProd,
   },
+  images: {
+    domains: ["github.com"],
+  },
 };

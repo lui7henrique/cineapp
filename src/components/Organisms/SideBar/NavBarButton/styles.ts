@@ -4,7 +4,7 @@ import styled from "styled-components";
 import theme from "../../../../styles/theme";
 
 type IButtonProps = {
-  isActive?: boolean;
+  isMinimized?: boolean;
 };
 
 export const Button = styled.div<IButtonProps>`
@@ -18,6 +18,10 @@ export const Button = styled.div<IButtonProps>`
   position: relative;
   overflow: hidden;
   background: transparent;
+
+  p {
+    display: ${({ isMinimized }) => (isMinimized ? "none" : "block")};
+  }
 
   &.is-active {
     &:before {

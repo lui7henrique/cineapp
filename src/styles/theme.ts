@@ -18,6 +18,7 @@ export default {
       small: "3px",
       medium: "5px",
       large: "10px",
+      full: "50%",
     },
   },
 };
