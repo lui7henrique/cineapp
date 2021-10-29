@@ -11,6 +11,7 @@ import { MovieType } from "../types/movie";
 import { TvType } from "../types/tv";
 
 type HomeProps = {
+  mostPopularMovie: MovieType;
   popularMovies: MovieType[];
   topRatedMovies: MovieType[];
   popularTv: TvType[];
@@ -18,6 +19,7 @@ type HomeProps = {
 };
 
 export default function Home({
+  mostPopularMovie,
   popularMovies,
   topRatedMovies,
   popularTv,
@@ -46,42 +48,25 @@ export default function Home({
         }}
       />
       <HomeTemplate
+        mostPopularMovie={mostPopularMovie}
         popularMovies={popularMovies}
         topRatedMovies={topRatedMovies}
         popularTv={popularTv}
         topRatedTv={topRatedTv}
       />
-
-      {/* <Content>
-          <Highlight movie={popularMovies[0]} tv={popularTv[0]} />
-          <CardList
-            title="🎥 Filmes populares"
-            list={popularMovies.slice(1, popularMovies.length)}
-            type="movies"
-          />
-          <CardList
-            title="✅ Filmes bem avaliados"
-            list={topRatedMovies}
-            type="movies"
-          />
-          <CardList
-            title="📺 Séries populares"
-            list={popularTv.slice(1, popularTv.length)}
-            type="tv"
-          />
-          <CardList
-            title="✅ Séries bem avaliadas"
-            list={topRatedTv}
-            type="tv"
-          />
-        </Content> */}
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const popularMoviesResponse = await api.get("/movie/popular");
-  const popularMovies: MovieType[] = popularMoviesResponse.data.results;
+  const allPopularMovies: MovieType[] = popularMoviesResponse.data.results;
+  const popularMovies: MovieType[] = allPopularMovies.slice(
+    1,
+    allPopularMovies.length
+  );
+
+  const mostPopularMovie = allPopularMovies.slice(0, 1)[0];
 
   const topRatedMoviesResponse = await api.get("/movie/top_rated");
   const topRatedMovies: MovieType[] = topRatedMoviesResponse.data.results;
@@ -94,6 +79,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      mostPopularMovie,
       popularMovies,
       topRatedMovies,
       popularTv,

@@ -5,8 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div<{ sideBarIsMinimized: boolean }>`
-  width: ${({ sideBarIsMinimized }) =>
-    sideBarIsMinimized ? "calc(100vw - 50px)" : "calc(100vw - 250px)"};
+  width: 100%;
   height: 100vh;
   overflow: auto;
 `;

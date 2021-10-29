@@ -13,10 +13,13 @@ interface IListItemProps {
 export function ListItem({ item, type }: IListItemProps) {
   return (
     <S.Container>
-      <S.Poster
-        src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-        alt={item.title}
-      />
+      <S.PosterWrapper>
+        <S.Poster
+          src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+          alt={item.title}
+          layout="fill"
+        />
+      </S.PosterWrapper>
       <Link href={`${type}/${item.id}`}>
         <a>
           <S.TrailerButton>

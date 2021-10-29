@@ -15,7 +15,8 @@ export const GlobalStyles = createGlobalStyle`
     --secondary: #D6AE2F;
     --border: #212b54;
     --hover: #212b54;
-    --title: #BFC4D3;
+    --title: #bfc4d3;
+    --text: #90939f;
     --subtitle: #9e9e9e;
     --subtext: rgb(88, 88, 88);
   }
@@ -28,7 +29,7 @@ export const GlobalStyles = createGlobalStyle`
       font-size: 87.5%; //14px
     }
   }
-  
+    
 
   body {  
     font-family: Roboto, sans-serif;    
@@ -49,15 +50,15 @@ export const GlobalStyles = createGlobalStyle`
     cursor: pointer;
   }
 
-  body::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     width: 5px;
   }
 
-  body::-webkit-scrollbar-track {
+  *::-webkit-scrollbar-track {
     background: var(--shape);
   }
 
-  body::-webkit-scrollbar-thumb {
+  *::-webkit-scrollbar-thumb {
     background-color: var(--primary);
     border-radius: 20px;
     border: 3px solid var(--primary);

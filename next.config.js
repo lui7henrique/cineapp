@@ -8,6 +8,6 @@ module.exports = {
     disable: !isProd,
   },
   images: {
-    domains: ["github.com"],
+    domains: ["github.com", "image.tmdb.org"],
   },
 };

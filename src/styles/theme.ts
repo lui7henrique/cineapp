@@ -7,8 +7,8 @@ export default {
     secondary: "#D6AE2F",
     border: "#212b54",
     hover: "#212b54",
-    title: "#f9f9f9",
-    text: "#efefef",
+    title: "#bfc4d3",
+    text: "#90939f",
     subtitle: "#9e9e9e",
     subtext: "rgb(88, 88, 88)",
     gradient:
@@ -22,5 +22,12 @@ export default {
       large: "10px",
       full: "50%",
     },
+  },
+  breakpoints: {
+    mobile: "576px",
+    tablet: "768px",
+    desktop: "1024px",
+    widescreen: "1280px",
+    fullhd: "1440px",
   },
 };

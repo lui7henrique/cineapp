@@ -10,6 +10,10 @@ export const Container = styled.div<{ isMinimized: boolean }>`
   gap: 1rem;
   position: relative;
   transition: width 0.2s ease-in-out;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    display: none;
+  }
 `;
 
 export const Icon = styled.div`
@@ -25,11 +29,11 @@ export const MinimizeIcon = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0.5rem;
+  padding: 5px;
 `;
 
 export const Header = styled.div<{ isMinimized: boolean }>`
-  padding: 0.9rem;
+  padding: 1.5rem 0.9rem;
   border-bottom: 1px solid ${(props) => props.theme.colors.background};
   display: flex;
   align-items: center;

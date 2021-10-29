@@ -1,6 +1,6 @@
-import { Banner } from "../../components/Banner";
 import { CardList } from "../../components/CardList";
 import { Header } from "../../components/Header";
+import { Banner } from "../../components/Organisms/Banner";
 import { List } from "../../components/Organisms/List";
 import { MovieType } from "../../types/movie";
 import { TvType } from "../../types/tv";
@@ -8,6 +8,7 @@ import { BasicTemplate } from "../BasicTemplate";
 import * as S from "./styles";
 
 type HomeTemplateProps = {
+  mostPopularMovie: MovieType;
   popularMovies: MovieType[];
   topRatedMovies: MovieType[];
   popularTv: TvType[];
@@ -19,10 +20,12 @@ export function HomeTemplate({
   topRatedMovies,
   popularTv,
   topRatedTv,
+  mostPopularMovie,
 }: HomeTemplateProps) {
   return (
     <BasicTemplate>
       <S.Container>
+        <Banner item={mostPopularMovie} />
         <List items={popularMovies} type="movie" title="Filmes populares" />
         <List
           items={topRatedMovies}
