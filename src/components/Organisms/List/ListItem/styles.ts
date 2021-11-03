@@ -6,7 +6,7 @@ export const Container = styled.div`
 
   &:hover {
     figure {
-      filter: brightness(0.3);
+      filter: brightness(0.7);
       box-shadow: rgba(0, 0, 0, 0.8) 0px 6px 14px 0px,
         rgba(0, 0, 0, 0.8) 0px 2px 4px 0px,
         rgba(255, 255, 255, 0.01) 0px 0px 0px 1px inset;
@@ -19,10 +19,10 @@ export const Container = styled.div`
 `;
 
 export const PosterWrapper = styled.figure`
-  width: 186px;
+  width: 185px;
   height: 280px;
   border-radius: 5px;
-  filter: brightness(0.8);
+  filter: brightness(0.4);
   transition: all 0.2s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 14px 0px,
     rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
