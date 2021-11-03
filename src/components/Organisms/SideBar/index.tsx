@@ -3,19 +3,14 @@ import * as BoxIcons from "react-icons/bi";
 import * as Heroicons from "react-icons/hi";
 import * as MaterialDesign from "react-icons/md";
 
+import { useSidebar } from "../../../hooks/useSidebar";
 import { IconButton } from "./NavBarButton";
 import * as S from "./styles";
 import { UserProfile } from "./UserProfile";
 
-interface ISideBarProps {
-  sideBarIsMinimized: boolean;
-  handleToggleSideBarIsMinimized: () => void;
-}
+export function SideBar() {
+  const { sideBarIsMinimized, handleToggleSideBarIsMinimized } = useSidebar();
 
-export function SideBar({
-  sideBarIsMinimized,
-  handleToggleSideBarIsMinimized,
-}: ISideBarProps) {
   return (
     <S.Container isMinimized={sideBarIsMinimized}>
       <S.MinimizeIcon onClick={handleToggleSideBarIsMinimized}>

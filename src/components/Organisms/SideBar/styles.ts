@@ -2,7 +2,7 @@ import * as MaterialDesign from "react-icons/md";
 import styled from "styled-components";
 
 export const Container = styled.div<{ isMinimized: boolean }>`
-  width: ${({ isMinimized }) => (isMinimized ? "50px" : "250px")};
+  width: ${({ isMinimized }) => (isMinimized ? "50px" : "300px")};
   height: 100vh;
   background: ${(props) => props.theme.colors.shape};
   display: flex;
