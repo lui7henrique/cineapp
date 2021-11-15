@@ -15,7 +15,7 @@ Cineapp is for movie lovers, who like to explore thousands of movies and TV seri
 - [x] Watchlist
 - [x] Responsive
 
-## 👩‍💻 Techs
+## 👩‍💻 Technologies
 - [ReactJS](https://reactjs.org)
 - [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
