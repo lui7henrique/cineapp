@@ -1,24 +1,21 @@
 
 # 🎬 Cineapp
+Cineapp is for movie lovers, who like to explore thousands of movies and TV series, with information such as synopsis, cast, budget, and more.. It has filters by genre and research on films, actors/directors and series! In addition to the function of creating watch list through your Google account!
+> Access on: https://cineapp.vercel.app/
 
-## 🖼 Imagens
+## 🖼 Images
 ![cineapp](https://user-images.githubusercontent.com/70612836/128612355-0d875460-ef5b-4d52-bc85-377285d9edce.png)
 
 
-## 💻 Projeto
-
-Cineapp é ideal para apaixonados por cinema, que gostam de explorar milhares de filmes e séries de TV, com informações como sinopse, elenco, orçamento, bilheteria, e etc... Contando com filtros por gênero e pesquisa sobre filmes, atores/diretores e séries! Além da função de criar watchlist através da sua conta do Google! 
-> Acesse em: https://cineapp.vercel.app/
-
 ## 🧠 To do
-- [x] Página de filmes
-- [x] Página de ator
-- [x] Página de tv
+- [x] Movies page
+- [x] Actors page
+- [x] Series page
 - [x] Login e autenticação
-- [x] Função de watchlist 
-- [x] Responsividade
+- [x] Watchlist
+- [x] Responsive
 
-## 👩‍💻 Tecnologias
+## 👩‍💻 Techs
 - [ReactJS](https://reactjs.org)
 - [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -26,4 +23,8 @@ Cineapp é ideal para apaixonados por cinema, que gostam de explorar milhares de
 - [Firebase Authentication e Realtime Database](https://firebase.google.com/?hl=pt)
 - [The Movie Database - API](https://developers.themoviedb.org/3/getting-started/introduction)
 - [ESlint](https://eslint.org/)
+
+--- 
+
+<p align="center">Made with 💙 by Luiz Henrique</p>
 
